@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowUpRight, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import { APPS } from "@/data/apps";
 import { PhoneFrame } from "@/components/phones/PhoneFrame";
@@ -20,33 +20,48 @@ export const AppsShowcase = () => {
     }
   }, [visibleApps.length, activeIndex]);
 
-  // Scroll observer to update activeIndex as the left story stream scrolls
+  // Precise scroll spy to keep activeIndex in sync with left story stream
   useEffect(() => {
     if (visibleApps.length === 0) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = Number(entry.target.getAttribute("data-index"));
-            if (!isNaN(index)) {
-              setActiveIndex(index);
-            }
-          }
-        });
-      },
-      {
-        root: null,
-        rootMargin: "-25% 0px -45% 0px", // triggers when item is centered in viewport
-        threshold: 0.1,
+    const updateActiveByPosition = () => {
+      const centerY = window.innerHeight * 0.45; // Eye-level line
+      let closestIdx = -1;
+      let minDistance = Infinity;
+
+      itemRefs.current.forEach((el, idx) => {
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const cardCenter = rect.top + rect.height / 2;
+        const dist = Math.abs(cardCenter - centerY);
+        if (dist < minDistance) {
+          minDistance = dist;
+          closestIdx = idx;
+        }
+      });
+
+      if (closestIdx !== -1) {
+        setActiveIndex((prev) => (prev !== closestIdx ? closestIdx : prev));
       }
-    );
+    };
 
-    itemRefs.current.forEach((el) => {
-      if (el) observer.observe(el);
-    });
+    let ticking = false;
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateActiveByPosition();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
 
-    return () => observer.disconnect();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    updateActiveByPosition();
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
   }, [visibleApps]);
 
   const scrollToApp = (index) => {
@@ -270,18 +285,15 @@ export const AppsShowcase = () => {
           {/* Interactive Phone Frame with Screen Transition */}
           <div className="relative z-10 transition-transform duration-700 hover:scale-[1.02]">
             <PhoneFrame testid="pinned-stage-phone" appId={currentApp.id} className="shadow-2xl shadow-black/80">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentApp.id}
-                  initial={{ opacity: 0, y: 12, scale: 0.98 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -12, scale: 0.98 }}
-                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                  className="h-full w-full"
-                >
-                  <CurrentScreen id={`pinned-${currentApp.id}`} />
-                </motion.div>
-              </AnimatePresence>
+              <motion.div
+                key={currentApp.id}
+                initial={{ opacity: 0.7, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+                className="h-full w-full"
+              >
+                <CurrentScreen id={`pinned-${currentApp.id}`} />
+              </motion.div>
             </PhoneFrame>
           </div>
 
