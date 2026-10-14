@@ -34,9 +34,9 @@ export default function TermsPage() {
       />
 
       <div className="mx-auto max-w-4xl px-6 sm:px-10">
-        <Reveal delay={0.2} className="mb-10 flex flex-wrap items-center justify-between gap-4 border-b hairline pb-6 text-xs text-dim">
+        <Reveal delay={0.2} className="mb-10 flex flex-wrap items-center justify-between gap-4 border-b hairline pb-6 text-xs text-slate-700 dark:text-slate-300">
           <span className="font-mono uppercase tracking-wider">Effective: {policyUpdated}</span>
-          <span className="font-mono text-dim flex items-center gap-1.5">
+          <span className="font-mono text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
             <Scale className="h-4 w-4" /> Jurisdiction: {jurisdictionCity}, India
           </span>
         </Reveal>
@@ -45,7 +45,7 @@ export default function TermsPage() {
           {/* 1. Who these terms are with */}
           <Reveal delay={0.3} className="space-y-4">
             <h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl">1. Agreement & Parties</h2>
-            <p className="text-base leading-relaxed text-dim sm:text-lg">
+            <p className="text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg">
               These terms constitute a legally binding agreement between you and <strong className="text-ink">{legalName}</strong>, a corporation incorporated under the laws of India, having its registered office at <span className="text-ink">{addressOneLine}</span>. By accessing or browsing <code className="rounded bg-ink/10 px-1.5 py-0.5 font-mono text-xs">sanibha.com</code>, you affirm your acceptance of these Terms. If you do not agree, you must discontinue use immediately.
             </p>
           </Reveal>
@@ -53,7 +53,7 @@ export default function TermsPage() {
           {/* 2. Using the website */}
           <Reveal delay={0.35} className="space-y-4">
             <h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl">2. Permitted Use</h2>
-            <p className="text-base leading-relaxed text-dim sm:text-lg">
+            <p className="text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg">
               You are granted a revocable, non-exclusive license to view the materials on this website for personal, non-commercial informational purposes. You agree not to misuse, probe, tamper with, or intentionally inject malicious code into the website, or utilize automated scraping engines to harvest proprietary data without explicit authorization.
             </p>
           </Reveal>
@@ -64,7 +64,7 @@ export default function TermsPage() {
               <h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl mb-3 flex items-center gap-3">
                 <FileText className="h-6 w-6 text-ink" /> 3. Apple App Store & Standard EULA
               </h2>
-              <p className="text-base leading-relaxed text-dim mb-4">
+              <p className="text-base leading-relaxed text-slate-700 dark:text-slate-300 mb-4">
                 Our mobile applications are distributed exclusively through the Apple App Store. Unless an application specifies custom end-user terms, your download and license are governed by Apple&apos;s standard{" "}
                 <a
                   href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
@@ -76,7 +76,7 @@ export default function TermsPage() {
                 </a>
                 .
               </p>
-              <p className="text-sm leading-relaxed text-dim">
+              <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300">
                 All financial transactions, in-app billing, subscriptions, and refund adjudications are handled directly by Apple Inc. See our{" "}
                 <Link to="/support" className="text-ink underline underline-offset-4 font-semibold">
                   Support Guide
@@ -89,10 +89,10 @@ export default function TermsPage() {
           {/* 4. Intellectual Property */}
           <Reveal delay={0.45} className="space-y-4">
             <h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl">4. Intellectual Property Rights</h2>
-            <p className="text-base leading-relaxed text-dim sm:text-lg">
+            <p className="text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg">
               All visual interfaces, design patterns, typography choreography, logos, copy, software, and audio-haptic implementations on this site belong to <strong className="text-ink">{legalName}</strong> or its licensors and are protected under international copyright and intellectual property treaties.
             </p>
-            <p className="text-xs text-dim italic">
+            <p className="text-xs text-slate-700 dark:text-slate-300 italic">
               Apple, iPhone, iPad, Dynamic Island, and App Store are registered trademarks of Apple Inc., registered in the U.S. and other countries.
             </p>
           </Reveal>
@@ -100,7 +100,7 @@ export default function TermsPage() {
           {/* 5. Informational Nature & Health Disclaimer */}
           <Reveal delay={0.5} className="space-y-4">
             <h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl">5. No Professional Advice Disclaimer</h2>
-            <p className="text-base leading-relaxed text-dim sm:text-lg">
+            <p className="text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg">
               Content provided on this site and within our utility applications is provided for informational and record-keeping purposes only on an &ldquo;as is&rdquo; basis. <strong className="text-ink">Nothing on this site constitutes medical, dietary, legal, or financial advice.</strong> Always consult an accredited healthcare practitioner, pediatrician, or legal professional for individualized advice.
             </p>
           </Reveal>
@@ -108,7 +108,7 @@ export default function TermsPage() {
           {/* 6. External Links */}
           <Reveal delay={0.55} className="space-y-4">
             <h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl">6. Third-Party Links</h2>
-            <p className="text-base leading-relaxed text-dim sm:text-lg">
+            <p className="text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg">
               Our site may incorporate references or links to external services (including Apple and documentation portals). We do not oversee or endorse these external sites and bear no liability for their content or operational practices.
             </p>
           </Reveal>
@@ -116,7 +116,7 @@ export default function TermsPage() {
           {/* 7. Limitation of Liability */}
           <Reveal delay={0.6} className="space-y-4">
             <h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl">7. Limitation of Liability</h2>
-            <p className="text-base leading-relaxed text-dim sm:text-lg">
+            <p className="text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg">
               To the maximum extent permissible by applicable law, {legalName} and its officers shall not be held liable for indirect, punitive, or consequential damages resulting from the use or inability to use this site. Nothing herein limits non-excludable consumer protections provided under statutory law.
             </p>
           </Reveal>
@@ -124,7 +124,7 @@ export default function TermsPage() {
           {/* 8. Governing Law */}
           <Reveal delay={0.65} className="space-y-4">
             <h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl">8. Governing Law & Dispute Resolution</h2>
-            <p className="text-base leading-relaxed text-dim sm:text-lg">
+            <p className="text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg">
               These Terms of Use are governed by the substantive laws of India. The courts of competent jurisdiction located at <strong className="text-ink">{jurisdictionCity}</strong> shall have exclusive jurisdiction over any proceedings or claims arising hereunder.
             </p>
           </Reveal>
@@ -132,7 +132,7 @@ export default function TermsPage() {
           {/* 9. Contact */}
           <Reveal delay={0.7} className="space-y-4 border-t hairline pt-10">
             <h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl">Inquiries</h2>
-            <p className="text-base leading-relaxed text-dim">
+            <p className="text-base leading-relaxed text-slate-700 dark:text-slate-300">
               For any questions regarding these Terms of Use, please contact:{" "}
               <a href={`mailto:${supportEmail}`} className="text-ink underline underline-offset-4">
                 {supportEmail}

@@ -25,7 +25,7 @@ const MobileMenu = ({ onClose }) => (
     <nav className="flex flex-col gap-2">
       {NAV.map((n, i) => (
         <motion.div key={n.to} initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 + i * 0.07, duration: 0.6, ease }}>
-          <Link data-testid={`mobile-nav-${n.label.toLowerCase()}`} to={n.to} onClick={onClose} className="font-display text-5xl font-medium tracking-tight">
+          <Link data-testid={`mobile-nav-${n.label.toLowerCase()}`} to={n.to} onClick={onClose} className="font-display text-5xl font-medium tracking-tight text-slate-950 dark:text-white">
             {n.label}
           </Link>
         </motion.div>
@@ -66,7 +66,7 @@ export const Navbar = () => {
                 {({ isActive }) => (
                   <>
                     {isActive && <motion.span layoutId="nav-pill" className="absolute inset-0 rounded-full bg-ink/[0.07]" transition={{ type: "spring", stiffness: 400, damping: 32 }} />}
-                    <span className={`relative transition-colors ${isActive ? "text-ink" : "text-dim hover:text-ink"}`}>{n.label}</span>
+                    <span className={`relative transition-colors ${isActive ? "text-slate-950 dark:text-white font-semibold" : "text-slate-700 hover:text-slate-950 dark:text-slate-300 dark:hover:text-white"}`}>{n.label}</span>
                   </>
                 )}
               </NavLink>

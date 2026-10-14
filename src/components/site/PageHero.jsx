@@ -6,7 +6,7 @@ export const PageHero = ({ eyebrow, lines, text, testid }) => (
     <div className="relative mx-auto max-w-7xl">
       <Reveal className="eyebrow mb-8 flex items-center gap-3"><span className="h-px w-10 bg-ink/40" />{eyebrow}</Reveal>
       <MaskLines as="h1" play delay={0.5} className="font-display text-[3rem] font-medium leading-[0.95] tracking-[-0.04em] sm:text-7xl lg:text-[6.5rem]" lines={lines} />
-      {text && <Reveal delay={0.8} className="mt-8 max-w-xl text-base leading-relaxed text-dim sm:text-lg">{text}</Reveal>}
+      {text && <Reveal delay={0.8} className="mt-8 max-w-xl text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg font-normal">{text}</Reveal>}
     </div>
   </section>
 );

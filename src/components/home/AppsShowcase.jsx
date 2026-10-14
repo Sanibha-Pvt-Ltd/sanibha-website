@@ -115,7 +115,7 @@ export const AppsShowcase = () => {
                   className="h-2 w-2 rounded-full transition-transform group-hover:scale-125 shrink-0"
                   style={{ background: app.accent }}
                 />
-                <span className={`font-mono text-[10px] ${isActive ? "text-white/80 dark:text-black/70" : "text-slate-500 dark:text-slate-400"}`}>{app.no}</span>
+                <span className={`font-mono text-[10px] font-bold ${isActive ? "text-white/90 dark:text-black/80" : "text-slate-700 dark:text-slate-300"}`}>{app.no}</span>
                 <span>{app.name}</span>
               </button>
             );

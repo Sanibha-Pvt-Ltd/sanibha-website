@@ -32,20 +32,20 @@ export default function DataRequestPage() {
       />
 
       <div className="mx-auto max-w-4xl px-6 sm:px-10">
-        <Reveal delay={0.2} className="mb-10 flex flex-wrap items-center justify-between gap-4 border-b hairline pb-6 text-xs text-dim">
+        <Reveal delay={0.2} className="mb-10 flex flex-wrap items-center justify-between gap-4 border-b hairline pb-6 text-xs text-slate-700 dark:text-slate-300">
           <span className="font-mono uppercase tracking-wider">Last updated: {policyUpdated}</span>
-          <span className="font-mono text-dim">Statutory Response Window: 30 Days</span>
+          <span className="font-mono text-slate-700 dark:text-slate-300">Statutory Response Window: 30 Days</span>
         </Reveal>
 
         <div className="space-y-14 text-ink">
           {/* Section 1: Data in Apps */}
           <Reveal delay={0.3} className="space-y-4">
             <h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl">1. Local on-device app data</h2>
-            <p className="text-base leading-relaxed text-dim sm:text-lg">
+            <p className="text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg">
               Because our architecture adheres strictly to an on-device privacy paradigm, all photos, scan documents, caloric diaries, and personal entries remain stored locally in your iPhone&apos;s sandboxed storage.
             </p>
             <div className="rounded-2xl border hairline p-6 bg-ink/[0.015]">
-              <ul className="space-y-3 text-sm text-dim">
+              <ul className="space-y-3 text-sm text-slate-700 dark:text-slate-300">
                 <li className="flex items-start gap-3">
                   <CheckCircle className="h-5 w-5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
                   <span><strong className="text-ink">Direct Self-Export:</strong> You can export raw records at any time directly within the Settings menu of each app for free (CSV/JSON/PDF).</span>
@@ -61,7 +61,7 @@ export default function DataRequestPage() {
           {/* Section 2: Data we hold */}
           <Reveal delay={0.35} className="space-y-4">
             <h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl">2. Information we may hold</h2>
-            <p className="text-base leading-relaxed text-dim sm:text-lg">
+            <p className="text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg">
               The primary records we retain are limited to direct correspondence you have voluntarily initiated with us (such as customer support dispatches and email attachments). Under the DPDP Act 2023, you have the right to request:
             </p>
             <div className="grid gap-3 sm:grid-cols-2 text-sm">
@@ -83,7 +83,7 @@ export default function DataRequestPage() {
             <h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl">
               3. How to submit your request
             </h2>
-            <ol className="space-y-4 text-sm text-dim list-decimal list-inside">
+            <ol className="space-y-4 text-sm text-slate-700 dark:text-slate-300 list-decimal list-inside">
               <li>
                 <strong className="text-ink">Initiate from your verified email:</strong> Email us from the specific email address you originally used when communicating with our team. This serves as our primary non-intrusive identity verification.
               </li>
@@ -108,10 +108,10 @@ export default function DataRequestPage() {
           {/* Section 4: What happens next */}
           <Reveal delay={0.45} className="space-y-4">
             <h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl">4. Timelines & Escalation</h2>
-            <p className="text-base leading-relaxed text-dim sm:text-lg">
+            <p className="text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg">
               We acknowledge receipt within <strong className="text-ink">{responseTime}</strong> and complete all statutory data requests within <strong className="text-ink">30 calendar days</strong> without assessing any administrative fees.
             </p>
-            <p className="text-sm leading-relaxed text-dim">
+            <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300">
               If you believe your statutory data rights have not been handled adequately, you may escalate directly to our designated{" "}
               <Link to="/privacy#grievance" className="text-ink underline underline-offset-4 font-semibold">
                 Grievance Officer

@@ -22,15 +22,15 @@ export const Footer = () => {
       <div className="mx-auto grid max-w-7xl gap-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.2fr]">
         {/* Col 1: Studio */}
         <div>
-          <p className="max-w-sm font-serif text-3xl italic leading-tight">{tagline}</p>
-          <div className="mt-6 text-xs text-dim leading-relaxed">
-            <p className="font-semibold text-ink">{legalName}</p>
+          <p className="max-w-sm font-serif text-3xl italic leading-tight text-slate-950 dark:text-white">{tagline}</p>
+          <div className="mt-6 text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
+            <p className="font-semibold text-slate-950 dark:text-white">{legalName}</p>
             <p className="mt-1 max-w-xs">{addressOneLine}</p>
           </div>
           <Link
             to="/contact"
             data-testid="footer-contact-link"
-            className="mt-5 inline-block border-b border-ink/40 pb-1 text-xs font-semibold uppercase tracking-wider transition-colors hover:border-ink"
+            className="mt-5 inline-block border-b-2 border-slate-900/50 dark:border-white/50 pb-1 text-xs font-bold uppercase tracking-wider text-slate-950 dark:text-white transition-colors hover:border-slate-900 dark:hover:border-white"
           >
             Start a conversation &rarr;
           </Link>
@@ -39,13 +39,13 @@ export const Footer = () => {
         {/* Col 2: Navigate */}
         <div>
           <p className="eyebrow mb-4">Navigate</p>
-          <ul className="space-y-2.5 text-sm">
+          <ul className="space-y-2.5 text-sm font-medium">
             {NAV.map((n) => (
               <li key={n.to}>
                 <Link
                   data-testid={`footer-nav-${n.label.toLowerCase()}`}
                   to={n.to}
-                  className="text-dim transition-colors hover:text-ink"
+                  className="text-slate-700 hover:text-slate-950 dark:text-slate-300 dark:hover:text-white transition-colors"
                 >
                   {n.label}
                 </Link>
@@ -57,29 +57,29 @@ export const Footer = () => {
         {/* Col 3: Support */}
         <div>
           <p className="eyebrow mb-4">Help & Support</p>
-          <ul className="space-y-2.5 text-sm">
+          <ul className="space-y-2.5 text-sm font-medium">
             <li>
-              <Link to="/support" className="text-dim transition-colors hover:text-ink">
+              <Link to="/support" className="text-slate-700 hover:text-slate-950 dark:text-slate-300 dark:hover:text-white transition-colors">
                 Support Center
               </Link>
             </li>
             <li>
-              <Link to="/support#cancel" className="text-dim transition-colors hover:text-ink">
+              <Link to="/support#cancel" className="text-slate-700 hover:text-slate-950 dark:text-slate-300 dark:hover:text-white transition-colors">
                 Cancel Subscription
               </Link>
             </li>
             <li>
-              <Link to="/support#refund" className="text-dim transition-colors hover:text-ink">
+              <Link to="/support#refund" className="text-slate-700 hover:text-slate-950 dark:text-slate-300 dark:hover:text-white transition-colors">
                 Refund Requests
               </Link>
             </li>
             <li>
-              <Link to="/data-request" className="text-dim transition-colors hover:text-ink">
+              <Link to="/data-request" className="text-slate-700 hover:text-slate-950 dark:text-slate-300 dark:hover:text-white transition-colors">
                 Data Rights (DPDP)
               </Link>
             </li>
             <li>
-              <a href={`mailto:${supportEmail}`} className="text-dim transition-colors hover:text-ink font-mono text-xs">
+              <a href={`mailto:${supportEmail}`} className="text-slate-700 hover:text-slate-950 dark:text-slate-300 dark:hover:text-white transition-colors font-mono text-xs font-semibold">
                 {supportEmail}
               </a>
             </li>
@@ -90,19 +90,19 @@ export const Footer = () => {
         <div className="flex flex-col justify-between gap-6">
           <div>
             <p className="eyebrow mb-4">Legal & Compliance</p>
-            <ul className="space-y-2.5 text-sm">
+            <ul className="space-y-2.5 text-sm font-medium">
               <li>
-                <Link to="/privacy" className="text-dim transition-colors hover:text-ink">
+                <Link to="/privacy" className="text-slate-700 hover:text-slate-950 dark:text-slate-300 dark:hover:text-white transition-colors">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link to="/terms" className="text-dim transition-colors hover:text-ink">
+                <Link to="/terms" className="text-slate-700 hover:text-slate-950 dark:text-slate-300 dark:hover:text-white transition-colors">
                   Terms of Use
                 </Link>
               </li>
               <li>
-                <Link to="/privacy#grievance" className="text-dim transition-colors hover:text-ink">
+                <Link to="/privacy#grievance" className="text-slate-700 hover:text-slate-950 dark:text-slate-300 dark:hover:text-white transition-colors">
                   Grievance Officer
                 </Link>
               </li>
@@ -117,7 +117,7 @@ export const Footer = () => {
                 onClick={() =>
                   window.__lenis ? window.__lenis.scrollTo(0) : window.scrollTo({ top: 0, behavior: "smooth" })
                 }
-                className="group flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-dim hover:text-ink"
+                className="group flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-700 hover:text-slate-950 dark:text-slate-300 dark:hover:text-white font-bold"
               >
                 Top <ArrowUp className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-1" />
               </button>
@@ -137,11 +137,11 @@ export const Footer = () => {
           </span>
         ))}
       </motion.div>
-      <div className="mx-auto flex max-w-7xl flex-col justify-between gap-2 border-t hairline py-6 text-xs text-dim sm:flex-row">
+      <div className="mx-auto flex max-w-7xl flex-col justify-between gap-2 border-t hairline py-6 text-xs text-slate-700 dark:text-slate-300 font-medium sm:flex-row">
         <span>{copyright}</span>
         <div className="flex items-center gap-4">
-        <span className="font-mono uppercase tracking-[0.2em]">Crafted for iOS</span>
-        <Link to="/admin" className="font-mono text-dim/60 hover:text-ink transition-colors text-[10px] tracking-wider uppercase">Admin</Link>
+        <span className="font-mono uppercase tracking-[0.2em] font-semibold">Crafted for iOS</span>
+        <Link to="/admin" className="font-mono text-slate-600 hover:text-slate-950 dark:text-slate-400 dark:hover:text-white transition-colors text-[10px] tracking-wider uppercase font-semibold">Admin</Link>
       </div>
       </div>
     </footer>

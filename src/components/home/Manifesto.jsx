@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 const TEXT = "Sanibha is a name for one who is pure, radiant and beautifully resembles a bright light. Every app we ship carries that promise — fewer taps, calmer screens, and the quiet joy of a tool that simply works.";
 
 const Word = ({ w, range, progress }) => {
-  const opacity = useTransform(progress, range, [0.6, 1]);
+  const opacity = useTransform(progress, range, [0.85, 1]);
   return <motion.span style={{ opacity }} className="mr-[0.25em] inline-block">{w}</motion.span>;
 };
 

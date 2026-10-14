@@ -44,7 +44,7 @@ export const ContactForm = () => {
     if (!BACKEND_URL) { toast.error("Messaging is unavailable right now."); return; }
     setStatus("sending");
     try {
-      await axios.post(`${API}/contact`, form);
+      await axios.post(`${BACKEND_URL}/contact`, form);
       setStatus("sent");
       setForm(empty);
       toast.success("Message received — we'll be in touch soon.");
@@ -66,8 +66,11 @@ export const ContactForm = () => {
         <div className="mt-3 flex flex-wrap gap-2">
           {INTERESTS.map((o) => (
             <button type="button" key={o} data-testid={`contact-interest-${o.toLowerCase().replace(/\s/g, "-")}`} onClick={() => setForm({ ...form, app_interest: o })}
-              className={`relative rounded-full border px-4 py-2 text-sm font-medium transition-colors ${form.app_interest === o ? "border-transparent text-canvas" : "hairline text-dim hover:text-ink"}`}>
-              {form.app_interest === o && <motion.span layoutId="interest-pill" className="absolute inset-0 rounded-full bg-ink" transition={{ type: "spring", stiffness: 400, damping: 30 }} />}
+              className={`relative rounded-full border px-4 py-2 text-sm font-semibold transition-all shadow-sm ${
+                form.app_interest === o
+                  ? "border-slate-900 bg-slate-900 text-white dark:border-white dark:bg-white dark:text-slate-950 shadow-md"
+                  : "border-slate-300 dark:border-white/15 bg-white dark:bg-surface text-slate-800 dark:text-slate-200 hover:border-slate-500 hover:bg-slate-50 dark:hover:bg-white/10"
+              }`}>
               <span className="relative">{o}</span>
             </button>
           ))}

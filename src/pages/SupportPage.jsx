@@ -47,13 +47,13 @@ export default function SupportPage() {
         <Reveal delay={0.2} className="mb-14 rounded-3xl border hairline bg-ink/[0.02] p-8 sm:p-10 backdrop-blur-sm">
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div>
-              <span className="font-mono text-xs uppercase tracking-[0.2em] text-dim flex items-center gap-2 mb-2">
+              <span className="font-mono text-xs uppercase tracking-[0.2em] text-slate-700 dark:text-slate-300 flex items-center gap-2 mb-2">
                 <Clock className="h-4 w-4 text-ink" /> Guaranteed Human Reply
               </span>
               <h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl">
                 Write to human support
               </h2>
-              <p className="mt-2 max-w-xl text-sm leading-relaxed text-dim sm:text-base">
+              <p className="mt-2 max-w-xl text-sm leading-relaxed text-slate-700 dark:text-slate-300 sm:text-base">
                 We review every single ticket directly. We reply within <strong className="text-ink">{responseTime}</strong>, Monday to Friday.
               </p>
             </div>
@@ -65,14 +65,14 @@ export default function SupportPage() {
             </a>
           </div>
 
-          <div className="mt-8 border-t hairline pt-6 text-xs text-dim">
+          <div className="mt-8 border-t hairline pt-6 text-xs text-slate-700 dark:text-slate-300">
             <p className="font-medium text-ink mb-2">To help us resolve your issue promptly, please include:</p>
             <ul className="grid gap-2 sm:grid-cols-3 list-disc list-inside">
               <li>App name & installed version</li>
               <li>iPhone model & iOS version</li>
               <li>Expected vs actual result & screenshot</li>
             </ul>
-            <p className="mt-3 text-dim/80 italic">
+            <p className="mt-3 text-slate-700 dark:text-slate-300/80 italic">
               * Note: Please never send passwords or credit card numbers. We will never ask for them.
             </p>
           </div>
@@ -97,17 +97,17 @@ export default function SupportPage() {
                 <h3 className="font-display text-xl font-medium text-ink mb-3">
                   Cancel a Subscription
                 </h3>
-                <p className="text-sm leading-relaxed text-dim mb-4">
+                <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300 mb-4">
                   Subscriptions are billed and managed directly through Apple. Deleting the application does not automatically cancel the subscription.
                 </p>
-                <ol className="space-y-2 text-xs text-dim list-decimal list-inside bg-ink/[0.02] p-4 rounded-xl">
+                <ol className="space-y-2 text-xs text-slate-700 dark:text-slate-300 list-decimal list-inside bg-ink/[0.02] p-4 rounded-xl">
                   <li>Open <strong className="text-ink">Settings</strong> on your iPhone</li>
                   <li>Tap your <strong className="text-ink">Apple Account name</strong> at the top</li>
                   <li>Tap <strong className="text-ink">Subscriptions</strong></li>
                   <li>Select the app, then tap <strong className="text-ink">Cancel Subscription</strong></li>
                 </ol>
               </div>
-              <p className="mt-4 text-xs text-dim italic">
+              <p className="mt-4 text-xs text-slate-700 dark:text-slate-300 italic">
                 You retain full premium access until the end of your prepaid billing period.
               </p>
             </Reveal>
@@ -121,10 +121,10 @@ export default function SupportPage() {
                 <h3 className="font-display text-xl font-medium text-ink mb-3">
                   Request a Refund
                 </h3>
-                <p className="text-sm leading-relaxed text-dim mb-4">
+                <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300 mb-4">
                   Because payments are processed through Apple App Store in-app purchases, developers cannot issue direct merchant refunds. Apple handles all claims through their dedicated portal.
                 </p>
-                <div className="text-xs text-dim space-y-2 bg-ink/[0.02] p-4 rounded-xl">
+                <div className="text-xs text-slate-700 dark:text-slate-300 space-y-2 bg-ink/[0.02] p-4 rounded-xl">
                   <p>1. Visit Apple's dispute portal below.</p>
                   <p>2. Sign in with the Apple ID used for purchase.</p>
                   <p>3. Select &ldquo;Request a refund&rdquo; and specify your reason.</p>
@@ -149,14 +149,14 @@ export default function SupportPage() {
                 <h3 className="font-display text-xl font-medium text-ink mb-3">
                   Restore Purchases
                 </h3>
-                <p className="text-sm leading-relaxed text-dim mb-4">
+                <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300 mb-4">
                   If you bought a lifetime pass or active subscription and reinstall the app, you will never be charged twice.
                 </p>
-                <p className="text-xs text-dim leading-relaxed bg-ink/[0.02] p-4 rounded-xl">
+                <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed bg-ink/[0.02] p-4 rounded-xl">
                   Open the app, navigate to its Settings or Subscription paywall, and tap <strong className="text-ink">&ldquo;Restore Purchases&rdquo;</strong>. Ensure you are signed in to the identical Apple ID on your iPhone.
                 </p>
               </div>
-              <p className="mt-4 text-xs text-dim italic">
+              <p className="mt-4 text-xs text-slate-700 dark:text-slate-300 italic">
                 Restorations query StoreKit locally and activate in less than 3 seconds.
               </p>
             </Reveal>
@@ -170,10 +170,10 @@ export default function SupportPage() {
                 <h3 className="font-display text-xl font-medium text-ink mb-3">
                   Switching Devices & Backups
                 </h3>
-                <p className="text-sm leading-relaxed text-dim mb-4">
+                <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300 mb-4">
                   Our apps store records locally on your device for strict privacy. When migrating to a new iPhone, standard iCloud Backup or Mac Encrypted Backups seamlessly restore your app databases.
                 </p>
-                <p className="text-xs text-dim leading-relaxed bg-ink/[0.02] p-4 rounded-xl">
+                <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed bg-ink/[0.02] p-4 rounded-xl">
                   You can also export your raw logs into standard JSON/CSV files anytime using the in-app export tool before migrating.
                 </p>
               </div>
@@ -195,7 +195,7 @@ export default function SupportPage() {
               <h3 className="font-display text-lg font-medium text-ink mb-1">
                 Health & Nutrition Disclaimer
               </h3>
-              <p className="text-sm leading-relaxed text-dim">
+              <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300">
                 Sanibha applications (including calorie, water, and baby trackers) are personal logging and utility tools designed to assist your daily routines. They do not dispense medical, pediatric, or clinical advice. For questions regarding medical diagnoses, dietary interventions, or infant healthcare, always consult a qualified medical professional.
               </p>
             </div>

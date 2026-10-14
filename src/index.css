@@ -8,7 +8,7 @@
         --font-body: 'Manrope', sans-serif;
         --bg: 251 251 250;
         --fg: 15 23 42;
-        --dim: 55 65 81;
+        --dim: 30 41 59;
         --surface: 255 255 255;
         --line: 15 23 42;
         --prism: linear-gradient(120deg, #d97706 0%, #db2777 50%, #2563eb 100%);
@@ -25,7 +25,7 @@
         --secondary: 210 40% 96%;
         --secondary-foreground: 222 47% 11%;
         --muted: 210 40% 96%;
-        --muted-foreground: 215 19% 35%;
+        --muted-foreground: 215 25% 27%;
         --accent: 210 40% 96%;
         --accent-foreground: 222 47% 11%;
         --destructive: 0 84% 60%;
@@ -38,7 +38,7 @@
     .dark {
         --bg: 11 12 16;
         --fg: 248 250 252;
-        --dim: 160 172 192;
+        --dim: 203 213 225;
         --surface: 23 26 35;
         --line: 255 255 255;
         --prism: linear-gradient(120deg, #f59e0b 0%, #ec4899 50%, #3b82f6 100%);
@@ -107,8 +107,12 @@
     }
     .hairline { border-color: rgb(var(--line) / 0.16); }
     .outline-text {
-        color: transparent;
-        -webkit-text-stroke: 1.5px rgb(var(--fg) / 0.85);
+        color: rgb(var(--fg) / 0.82);
+        -webkit-text-stroke: 1.5px rgb(var(--fg));
+    }
+    .dark .outline-text {
+        color: rgb(var(--fg) / 0.2);
+        -webkit-text-stroke: 1.5px rgb(var(--fg) / 0.9);
     }
 }
 

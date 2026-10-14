@@ -35,13 +35,13 @@ export default function ContactPage() {
             <span className="relative flex h-3 w-3"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" /><span className="relative inline-flex h-3 w-3 rounded-full bg-emerald-400" /></span>
             <span className="eyebrow">Inbox open</span>
           </div>
-          <p className="mt-6 font-serif text-3xl italic leading-tight">Every message is read by a real person at Sanibha.</p>
+          <p className="mt-6 font-serif text-3xl italic leading-tight text-slate-950 dark:text-white">Every message is read by a real person at Sanibha.</p>
           <p className="eyebrow mb-2 mt-12">Common questions</p>
           <Accordion type="single" collapsible data-testid="contact-faq">
             {faqs.map((item, i) => (
               <AccordionItem key={item.q} value={`f${i}`} className="hairline">
-                <AccordionTrigger data-testid={`faq-trigger-${i}`} className="text-left font-display text-lg hover:no-underline">{item.q}</AccordionTrigger>
-                <AccordionContent className="text-dim">{item.a}</AccordionContent>
+                <AccordionTrigger data-testid={`faq-trigger-${i}`} className="text-left font-display text-lg hover:no-underline text-slate-950 dark:text-white font-medium">{item.q}</AccordionTrigger>
+                <AccordionContent className="text-slate-700 dark:text-slate-300 font-normal leading-relaxed text-base">{item.a}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>

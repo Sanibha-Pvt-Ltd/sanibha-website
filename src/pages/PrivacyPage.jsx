@@ -52,7 +52,7 @@ export default function PrivacyPage() {
       />
 
       <div className="mx-auto max-w-4xl px-6 sm:px-10">
-        <Reveal delay={0.2} className="mb-10 flex flex-wrap items-center justify-between gap-4 border-b hairline pb-6 text-xs text-dim">
+        <Reveal delay={0.2} className="mb-10 flex flex-wrap items-center justify-between gap-4 border-b hairline pb-6 text-xs text-slate-700 dark:text-slate-300">
           <span className="font-mono uppercase tracking-wider">Last updated: {policyUpdated}</span>
           <span className="font-mono text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
             <ShieldCheck className="h-4 w-4" /> DPDP Act 2023 & GDPR Compliant
@@ -71,7 +71,7 @@ export default function PrivacyPage() {
           {/* 1. Who we are */}
           <Reveal delay={0.35} className="space-y-4">
             <h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl">1. Who we are</h2>
-            <p className="text-base leading-relaxed text-dim sm:text-lg">
+            <p className="text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg">
               The website is operated by <strong className="text-ink">{legalName}</strong>, a company registered in India, with its registered corporate office at <span className="text-ink">{addressOneLine}</span>. In this policy, &ldquo;we&rdquo;, &ldquo;our&rdquo;, and &ldquo;us&rdquo; refer to {legalName}.
             </p>
           </Reveal>
@@ -82,13 +82,13 @@ export default function PrivacyPage() {
             <div className="grid gap-6 sm:grid-cols-2">
               <div className="rounded-xl border hairline p-6 bg-ink/[0.015]">
                 <h3 className="font-display text-lg font-medium text-ink mb-2">Technical logs</h3>
-                <p className="text-sm leading-relaxed text-dim">
+                <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300">
                   Our hosting infrastructure ({hostingProvider}) processes essential technical signals when your browser requests a page (IP address, requested path, browser type, and timestamp) solely to deliver assets securely, detect DDoS attacks, and prevent abuse.
                 </p>
               </div>
               <div className="rounded-xl border hairline p-6 bg-ink/[0.015]">
                 <h3 className="font-display text-lg font-medium text-ink mb-2">What you send us</h3>
-                <p className="text-sm leading-relaxed text-dim">
+                <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300">
                   If you email us directly or submit a statutory data request, we receive your email address and any text or attachments you choose to send. We use this strictly to respond to your inquiry and maintain records.
                 </p>
               </div>
@@ -98,7 +98,7 @@ export default function PrivacyPage() {
           {/* 3. What we don't do */}
           <Reveal delay={0.45} className="space-y-4">
             <h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl">3. What we don't do</h2>
-            <p className="text-base text-dim">We design for total absence of surveillance. On this site:</p>
+            <p className="text-base text-slate-700 dark:text-slate-300">We design for total absence of surveillance. On this site:</p>
             <div className="grid gap-3 sm:grid-cols-2">
               {[
                 "Zero tracking cookies or persistent identifiers",
@@ -112,7 +112,7 @@ export default function PrivacyPage() {
                 </div>
               ))}
             </div>
-            <p className="text-xs text-dim italic pt-2">
+            <p className="text-xs text-slate-700 dark:text-slate-300 italic pt-2">
               If we ever introduce any of these in the future, we will update this policy first and highlight the change on our home page.
             </p>
           </Reveal>
@@ -120,7 +120,7 @@ export default function PrivacyPage() {
           {/* 4. Who we share information with */}
           <Reveal delay={0.5} className="space-y-4">
             <h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl">4. Who we share information with</h2>
-            <p className="text-base leading-relaxed text-dim sm:text-lg">
+            <p className="text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg">
               We share information only with trusted operational infrastructure partners necessary to host the site and reply to support inquiries (such as {hostingProvider} and Google Workspace for email delivery), or where required by statutory court order or law. These providers may process data across globally certified secure data centers.
             </p>
           </Reveal>
@@ -128,7 +128,7 @@ export default function PrivacyPage() {
           {/* 5. Retention */}
           <Reveal delay={0.55} className="space-y-4">
             <h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl">5. How long we retain data</h2>
-            <p className="text-base leading-relaxed text-dim sm:text-lg">
+            <p className="text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg">
               Server network edge logs are retained by our hosting provider for short operational cycles under their standard rotation settings. Correspondence received via email is retained only as long as necessary to assist you and satisfy statutory accounting obligations, after which it is permanently purged.
             </p>
           </Reveal>
@@ -136,7 +136,7 @@ export default function PrivacyPage() {
           {/* 6. Your Rights */}
           <Reveal delay={0.6} className="space-y-4">
             <h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl">6. Your rights (DPDP Act, 2023 & GDPR)</h2>
-            <p className="text-base leading-relaxed text-dim sm:text-lg">
+            <p className="text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg">
               Depending on where you live — including under India's Digital Personal Data Protection Act, 2023 (DPDPA), the EU/UK GDPR, and US State Privacy Laws — you have the statutory right to request confirmation of data held, access a readable copy, demand correction or erasure, or withdraw previously granted consent.
             </p>
             <div className="pt-2">
@@ -152,7 +152,7 @@ export default function PrivacyPage() {
           {/* 7. Children */}
           <Reveal delay={0.65} className="space-y-4">
             <h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl">7. Children's Privacy</h2>
-            <p className="text-base leading-relaxed text-dim sm:text-lg">
+            <p className="text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg">
               Our website is not targeted at children under 13 years of age, and we do not knowingly solicit or collect personal information from minors. If you believe a child has provided us with personal information, please notify us immediately and we will promptly delete it.
             </p>
           </Reveal>
@@ -160,24 +160,24 @@ export default function PrivacyPage() {
           {/* 8. Grievance Officer */}
           <Reveal delay={0.7} className="scroll-mt-32 space-y-4" id="grievance">
             <div className="rounded-2xl border hairline bg-ink/[0.02] p-6 sm:p-10">
-              <div className="flex items-center gap-3 text-xs font-mono uppercase tracking-[0.2em] text-dim mb-4">
+              <div className="flex items-center gap-3 text-xs font-mono uppercase tracking-[0.2em] text-slate-700 dark:text-slate-300 mb-4">
                 <UserCheck className="h-4 w-4 text-ink" /> Statutory Appointment
               </div>
               <h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl mb-4">
                 Grievance Officer
               </h2>
-              <p className="text-base leading-relaxed text-dim mb-8">
+              <p className="text-base leading-relaxed text-slate-700 dark:text-slate-300 mb-8">
                 In compliance with the Information Technology Act, 2000, and the Digital Personal Data Protection Act, 2023, the designated Grievance Officer for {legalName} is:
               </p>
 
               <dl className="grid gap-6 sm:grid-cols-2 border-t hairline pt-6 text-sm">
                 <div>
-                  <dt className="font-mono text-xs uppercase tracking-wider text-dim">Name & Title</dt>
+                  <dt className="font-mono text-xs uppercase tracking-wider text-slate-700 dark:text-slate-300">Name & Title</dt>
                   <dd className="mt-1 font-semibold text-ink text-base">{grievanceOfficer}</dd>
-                  <dd className="text-dim text-xs">{grievanceTitle}, {legalName}</dd>
+                  <dd className="text-slate-700 dark:text-slate-300 text-xs">{grievanceTitle}, {legalName}</dd>
                 </div>
                 <div>
-                  <dt className="font-mono text-xs uppercase tracking-wider text-dim">Email</dt>
+                  <dt className="font-mono text-xs uppercase tracking-wider text-slate-700 dark:text-slate-300">Email</dt>
                   <dd className="mt-1">
                     <a href={`mailto:${supportEmail}`} className="font-mono text-ink underline underline-offset-4 hover:opacity-80">
                       {supportEmail}
@@ -185,16 +185,16 @@ export default function PrivacyPage() {
                   </dd>
                 </div>
                 <div>
-                  <dt className="font-mono text-xs uppercase tracking-wider text-dim">Registered Address</dt>
-                  <dd className="mt-1 text-dim leading-relaxed">
+                  <dt className="font-mono text-xs uppercase tracking-wider text-slate-700 dark:text-slate-300">Registered Address</dt>
+                  <dd className="mt-1 text-slate-700 dark:text-slate-300 leading-relaxed">
                     {addressLines.map((l, i) => (
                       <span key={i} className="block">{l}</span>
                     ))}
                   </dd>
                 </div>
                 <div>
-                  <dt className="font-mono text-xs uppercase tracking-wider text-dim">Response Timelines</dt>
-                  <dd className="mt-1 text-dim">
+                  <dt className="font-mono text-xs uppercase tracking-wider text-slate-700 dark:text-slate-300">Response Timelines</dt>
+                  <dd className="mt-1 text-slate-700 dark:text-slate-300">
                     Acknowledgment within <strong className="text-ink">{responseTime}</strong>. Redressal within <strong className="text-ink">30 calendar days</strong>.
                   </dd>
                 </div>
@@ -205,7 +205,7 @@ export default function PrivacyPage() {
           {/* 9. Contact */}
           <Reveal delay={0.75} className="space-y-4 border-t hairline pt-10">
             <h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl">Questions?</h2>
-            <p className="text-base leading-relaxed text-dim">
+            <p className="text-base leading-relaxed text-slate-700 dark:text-slate-300">
               If you have any questions about this privacy statement, please write to us at{" "}
               <a href={`mailto:${supportEmail}`} className="text-ink underline underline-offset-4">
                 {supportEmail}

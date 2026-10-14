@@ -48,9 +48,9 @@ const Values = ({ principles }) => {
         {items.map((item, i) => (
           <Reveal key={item.title} delay={i * 0.05} className="group relative grid gap-4 overflow-hidden border-b hairline py-8 md:grid-cols-[120px_1fr_1.2fr] md:items-center">
             <span className="absolute inset-0 origin-bottom scale-y-0 bg-ink transition-transform duration-700 ease-[cubic-bezier(.76,0,.24,1)] group-hover:scale-y-100" />
-            <span className="relative font-mono text-sm text-dim transition-colors group-hover:text-canvas/70 md:pl-4">0{i + 1}</span>
-            <span className="relative font-display text-4xl font-medium tracking-tight transition-all duration-500 group-hover:translate-x-3 group-hover:text-canvas sm:text-6xl">{item.title}</span>
-            <span className="relative max-w-md text-dim transition-colors group-hover:text-canvas/80 md:pr-4">{item.desc}</span>
+            <span className="relative font-mono text-sm font-bold text-slate-700 dark:text-slate-300 transition-colors group-hover:text-canvas md:pl-4">0{i + 1}</span>
+            <span className="relative font-display text-4xl font-medium tracking-tight text-slate-950 dark:text-white transition-all duration-500 group-hover:translate-x-3 group-hover:text-canvas sm:text-6xl">{item.title}</span>
+            <span className="relative max-w-md text-base leading-relaxed text-slate-700 dark:text-slate-300 font-normal transition-colors group-hover:text-canvas md:pr-4">{item.desc}</span>
           </Reveal>
         ))}
       </div>
@@ -82,7 +82,7 @@ export default function AboutPage() {
       <section className="border-t hairline py-24 text-center">
         <Reveal>
           <p className="eyebrow">Ready to collaborate?</p>
-          <h3 className="mt-4 font-display text-4xl font-medium tracking-tight sm:text-5xl">We're always building something new.</h3>
+          <h3 className="mt-4 font-display text-4xl font-medium tracking-tight sm:text-5xl text-slate-950 dark:text-white">We're always building something new.</h3>
           <Link to="/contact" className="group mt-8 inline-flex items-center gap-3 rounded-full bg-ink px-7 py-3.5 font-semibold text-canvas transition-transform hover:scale-[1.03]">
             Get in touch <span className="flex h-9 w-9 items-center justify-center rounded-full prism-bg text-white transition-transform group-hover:rotate-[-45deg]"><ArrowRight className="h-4 w-4" /></span>
           </Link>
