@@ -297,40 +297,66 @@ export const AppsShowcase = () => {
             </PhoneFrame>
           </div>
 
-          {/* Stage Controls Bottom Navigation */}
-          <div className="relative z-10 mt-5 flex items-center justify-between w-full max-w-[340px] px-2 text-xs">
+          {/* Redesigned Floating Dynamic Island Navigation Capsule */}
+          <div className="relative z-10 mt-6 flex items-center justify-between w-full max-w-[340px] rounded-full border border-slate-200 dark:border-white/15 bg-white/95 dark:bg-surface/90 p-1.5 shadow-xl shadow-black/10 backdrop-blur-xl">
+            {/* Prev Button */}
             <button
               onClick={prevApp}
               aria-label="Previous app"
-              className="flex items-center gap-1.5 rounded-full border border-slate-300 dark:border-white/15 bg-white dark:bg-surface px-4 py-2 font-bold text-slate-900 dark:text-white shadow-sm hover:border-slate-400 hover:bg-slate-50 dark:hover:bg-white/10 transition-all active:scale-95"
+              data-testid="stage-prev-btn"
+              className="group flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-slate-100 dark:bg-white/10 text-slate-900 dark:text-white transition-all hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-950 active:scale-90"
             >
-              <ChevronLeft className="h-3.5 w-3.5" />
-              <span>Prev</span>
+              <ChevronLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />
             </button>
 
-            {/* Progress Dots */}
-            <div className="flex items-center gap-1.5">
-              {visibleApps.map((a, i) => (
-                <button
-                  key={a.id}
-                  onClick={() => scrollToApp(i)}
-                  aria-label={`Jump to ${a.name}`}
-                  className={`h-2 rounded-full transition-all ${
-                    i === activeIndex
-                      ? "w-6 bg-slate-950 dark:bg-white shadow-sm"
-                      : "w-2 bg-slate-300 hover:bg-slate-400 dark:bg-white/25 dark:hover:bg-white/50"
-                  }`}
+            {/* Center Dynamic Scrubber & Index */}
+            <div className="flex flex-col items-center justify-center px-2 flex-1 min-w-0">
+              <div className="flex items-center gap-2 mb-1.5">
+                <span
+                  className="h-2 w-2 rounded-full shrink-0 transition-colors duration-500 shadow-sm"
+                  style={{ background: currentApp.accent }}
                 />
-              ))}
+                <span className="font-mono text-xs font-bold text-slate-950 dark:text-white tracking-wider">
+                  {String(activeIndex + 1).padStart(2, "0")}{" "}
+                  <span className="text-slate-400 dark:text-slate-500 font-normal">
+                    / {String(visibleApps.length).padStart(2, "0")}
+                  </span>
+                </span>
+                <span className="text-slate-300 dark:text-white/20 text-xs">·</span>
+                <span className="font-mono text-[11px] font-semibold text-slate-700 dark:text-slate-300 truncate max-w-[110px]">
+                  {currentApp.name}
+                </span>
+              </div>
+
+              {/* Dynamic Interactive Progress Scrubber Bar */}
+              <div
+                className="relative h-1.5 w-full max-w-[170px] rounded-full bg-slate-100 dark:bg-white/10 overflow-hidden cursor-pointer"
+                onClick={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const clickX = e.clientX - rect.left;
+                  const ratio = Math.max(0, Math.min(1, clickX / rect.width));
+                  const targetIdx = Math.min(visibleApps.length - 1, Math.floor(ratio * visibleApps.length));
+                  scrollToApp(targetIdx);
+                }}
+                title="Click to jump to app"
+              >
+                <motion.div
+                  className="h-full rounded-full transition-colors duration-500"
+                  style={{ background: currentApp.accent }}
+                  animate={{ width: `${((activeIndex + 1) / visibleApps.length) * 100}%` }}
+                  transition={{ type: "spring", stiffness: 350, damping: 32 }}
+                />
+              </div>
             </div>
 
+            {/* Next Button */}
             <button
               onClick={nextApp}
               aria-label="Next app"
-              className="flex items-center gap-1.5 rounded-full border border-slate-300 dark:border-white/15 bg-white dark:bg-surface px-4 py-2 font-bold text-slate-900 dark:text-white shadow-sm hover:border-slate-400 hover:bg-slate-50 dark:hover:bg-white/10 transition-all active:scale-95"
+              data-testid="stage-next-btn"
+              className="group flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-slate-100 dark:bg-white/10 text-slate-900 dark:text-white transition-all hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-950 active:scale-90"
             >
-              <span>Next</span>
-              <ChevronRight className="h-3.5 w-3.5" />
+              <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </button>
           </div>
         </div>
