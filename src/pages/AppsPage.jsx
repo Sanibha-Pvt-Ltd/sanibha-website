@@ -72,7 +72,7 @@ export default function AppsPage() {
       <nav className="mx-auto flex max-w-7xl flex-wrap gap-2 px-6 sm:px-10">
         {visibleApps.map((a) => (
           <button key={a.id} data-testid={`apps-jump-${a.id}`} onClick={() => window.__lenis?.scrollTo(`#${a.id}`, { offset: -80 })}
-            className="rounded-full border hairline px-4 py-2 text-sm font-medium text-dim transition-colors hover:bg-ink hover:text-canvas">{a.no} · {a.name}</button>
+            className="rounded-full border border-ink/15 bg-surface px-4 py-2 text-sm font-semibold text-ink shadow-sm transition-all hover:bg-ink hover:text-canvas hover:border-ink">{a.no} · {a.name}</button>
         ))}
       </nav>
       {visibleApps.map((a, i) => <AppDetail key={a.id} app={a} flip={i % 2 === 1} />)}

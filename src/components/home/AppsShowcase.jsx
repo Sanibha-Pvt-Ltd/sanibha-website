@@ -105,18 +105,18 @@ export const AppsShowcase = () => {
               <button
                 key={app.id}
                 onClick={() => scrollToApp(idx)}
-                className={`group flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold transition-all ${
+                className={`group flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold transition-all shadow-sm ${
                   isActive
-                    ? "border-white/30 bg-white/10 text-white shadow-lg"
-                    : "border-white/5 bg-white/[0.03] text-white/50 hover:border-white/15 hover:text-white"
+                    ? "border-ink bg-ink text-canvas shadow-md"
+                    : "border-ink/15 bg-surface text-ink hover:border-ink/40 hover:bg-surface"
                 }`}
               >
                 <span
-                  className="h-1.5 w-1.5 rounded-full transition-transform group-hover:scale-125"
+                  className="h-2 w-2 rounded-full transition-transform group-hover:scale-125 shrink-0"
                   style={{ background: app.accent }}
                 />
-                <span className="font-mono text-[10px] text-white/40">{app.no}</span>
-                <span>{app.name}</span>
+                <span className={`font-mono text-[10px] ${isActive ? "text-canvas/70" : "text-dim"}`}>{app.no}</span>
+                <span className="font-semibold">{app.name}</span>
               </button>
             );
           })}
@@ -136,9 +136,9 @@ export const AppsShowcase = () => {
                 key={app.id}
                 ref={(el) => (itemRefs.current[idx] = el)}
                 data-index={idx}
-                className="relative min-h-[500px] flex flex-col justify-center rounded-[36px] border hairline bg-surface/50 p-8 sm:p-12 backdrop-blur-md transition-all duration-700"
+                className="relative min-h-[500px] flex flex-col justify-center rounded-[36px] border hairline bg-surface/90 p-8 sm:p-12 backdrop-blur-md transition-all duration-700 shadow-sm"
                 style={{
-                  borderColor: isActive ? "rgba(255,255,255,0.2)" : undefined,
+                  borderColor: isActive ? "rgb(var(--line) / 0.25)" : undefined,
                   boxShadow: isActive ? `0 20px 50px -10px ${app.glow}` : undefined,
                 }}
               >
@@ -158,12 +158,12 @@ export const AppsShowcase = () => {
                       >
                         <Icon className="h-5 w-5 text-black" />
                       </span>
-                      <span className="eyebrow">
+                      <span className="eyebrow font-semibold">
                         {app.no} — {app.virtue}
                       </span>
                     </div>
 
-                    <span className="font-mono text-xs text-dim">
+                    <span className="font-mono text-xs font-semibold text-dim">
                       {idx + 1} / {visibleApps.length}
                     </span>
                   </div>
@@ -172,13 +172,13 @@ export const AppsShowcase = () => {
                   <h3 className="mt-8 font-display text-4xl font-medium tracking-tight sm:text-5xl text-ink">
                     {app.name}
                   </h3>
-                  <p className="mt-3 font-serif text-2xl italic text-dim">{app.tagline}</p>
+                  <p className="mt-3 font-serif text-2xl italic text-ink/85">{app.tagline}</p>
                   <p className="mt-6 max-w-md leading-relaxed text-dim">{app.blurb}</p>
 
                   {/* Feature Checklist */}
                   <ul className="my-8 grid gap-2.5 sm:grid-cols-2">
                     {app.features.map((f) => (
-                      <li key={f} className="flex items-center gap-2.5 text-sm text-dim">
+                      <li key={f} className="flex items-center gap-2.5 text-sm font-medium text-ink/85">
                         <span className="h-1.5 w-1.5 rounded-full shrink-0" style={{ background: app.accent }} />
                         <span>{f}</span>
                       </li>
@@ -250,11 +250,11 @@ export const AppsShowcase = () => {
                 className="h-2 w-2 rounded-full animate-pulse shadow-sm"
                 style={{ background: currentApp.accent }}
               />
-              <span className="font-mono text-[11px] font-semibold text-white/80">
+              <span className="font-mono text-[11px] font-bold text-ink">
                 {currentApp.no} · {currentApp.name}
               </span>
             </div>
-            <span className={`eyebrow text-[10px] ${isAppComingSoon?.(currentApp.id) ? "text-amber-400" : ""}`}>
+            <span className={`eyebrow text-[10px] font-semibold ${isAppComingSoon?.(currentApp.id) ? "text-amber-600 font-bold" : "text-emerald-700 font-bold"}`}>
               {isAppComingSoon?.(currentApp.id) ? "Coming soon" : "Try it — it's live"}
             </span>
           </div>
@@ -282,7 +282,7 @@ export const AppsShowcase = () => {
             <button
               onClick={prevApp}
               aria-label="Previous app"
-              className="flex items-center gap-1 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-white/70 hover:bg-white/10 hover:text-white transition-all active:scale-95"
+              className="flex items-center gap-1 rounded-full border border-ink/15 bg-surface px-3 py-1.5 font-medium text-ink shadow-sm hover:border-ink/30 hover:bg-canvas transition-all active:scale-95"
             >
               <ChevronLeft className="h-3.5 w-3.5" />
               <span>Prev</span>
@@ -297,8 +297,8 @@ export const AppsShowcase = () => {
                   aria-label={`Jump to ${a.name}`}
                   className={`h-1.5 rounded-full transition-all ${
                     i === activeIndex
-                      ? "w-5 bg-white"
-                      : "w-1.5 bg-white/20 hover:bg-white/40"
+                      ? "w-5 bg-ink shadow-sm"
+                      : "w-1.5 bg-ink/25 hover:bg-ink/50"
                   }`}
                 />
               ))}
@@ -307,7 +307,7 @@ export const AppsShowcase = () => {
             <button
               onClick={nextApp}
               aria-label="Next app"
-              className="flex items-center gap-1 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-white/70 hover:bg-white/10 hover:text-white transition-all active:scale-95"
+              className="flex items-center gap-1 rounded-full border border-ink/15 bg-surface px-3 py-1.5 font-medium text-ink shadow-sm hover:border-ink/30 hover:bg-canvas transition-all active:scale-95"
             >
               <span>Next</span>
               <ChevronRight className="h-3.5 w-3.5" />
