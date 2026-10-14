@@ -12,6 +12,27 @@ export const AppsShowcase = () => {
   const visibleApps = APPS.filter((a) => config.appVisibility[a.id] !== false);
   const [activeIndex, setActiveIndex] = useState(0);
   const itemRefs = useRef([]);
+  const selectorRef = useRef(null);
+  const selectorChipRefs = useRef([]);
+
+  // Auto-scroll the active chip into view inside the selector bar
+  useEffect(() => {
+    const chip = selectorChipRefs.current[activeIndex];
+    if (chip && selectorRef.current) {
+      chip.scrollIntoView({
+        behavior: "smooth",
+        inline: "center",
+        block: "nearest",
+      });
+    }
+  }, [activeIndex]);
+
+  const scrollSelector = (direction) => {
+    if (selectorRef.current) {
+      const scrollAmount = direction === "left" ? -280 : 280;
+      selectorRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+  };
 
   // Ensure activeIndex is within bounds if apps are toggled offline
   useEffect(() => {
@@ -111,31 +132,109 @@ export const AppsShowcase = () => {
         </Reveal>
       </div>
 
-      {/* Quick Jump Bar */}
-      <div className="mb-12 overflow-x-auto pb-2 scrollbar-none">
-        <div className="flex items-center gap-2 min-w-max">
-          {visibleApps.map((app, idx) => {
-            const isActive = idx === activeIndex;
-            return (
-              <button
-                key={app.id}
-                onClick={() => scrollToApp(idx)}
-                className={`group flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-bold transition-all shadow-sm ${
-                  isActive
-                    ? "border-slate-900 bg-slate-900 text-white dark:border-white dark:bg-white dark:text-slate-950 shadow-md"
-                    : "border-slate-300 bg-white text-slate-800 hover:border-slate-500 hover:bg-slate-50 dark:border-white/15 dark:bg-surface dark:text-white dark:hover:border-white/30"
-                }`}
-              >
-                <span
-                  className="h-2 w-2 rounded-full transition-transform group-hover:scale-125 shrink-0"
-                  style={{ background: app.accent }}
-                />
-                <span className={`font-mono text-[10px] font-bold ${isActive ? "text-white/90 dark:text-black/80" : "text-slate-700 dark:text-slate-300"}`}>{app.no}</span>
-                <span>{app.name}</span>
-              </button>
-            );
-          })}
+      {/* Luxury App Selector Ribbon */}
+      <div className="relative mb-12 flex items-center rounded-2xl border border-slate-200/80 dark:border-white/10 bg-slate-100/70 dark:bg-white/[0.03] p-1.5 sm:p-2 backdrop-blur-xl shadow-inner">
+        {/* Left Scroll Chevron */}
+        <button
+          type="button"
+          onClick={() => scrollSelector("left")}
+          aria-label="Scroll apps left"
+          className="hidden sm:flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-slate-200/80 dark:border-white/10 bg-white dark:bg-surface text-slate-700 dark:text-slate-300 shadow-sm hover:scale-105 hover:bg-slate-50 dark:hover:bg-white/10 active:scale-95 transition-all z-20 cursor-pointer"
+        >
+          <ChevronLeft className="h-4 w-4" />
+        </button>
+
+        {/* Scrollable Track with Edge Masks */}
+        <div className="relative flex-1 overflow-hidden mx-1 sm:mx-2">
+          {/* Subtle Edge Feathering */}
+          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-6 bg-gradient-to-r from-slate-100 dark:from-canvas to-transparent z-10 hidden sm:block" />
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-6 bg-gradient-to-l from-slate-100 dark:from-canvas to-transparent z-10 hidden sm:block" />
+
+          <div
+            ref={selectorRef}
+            className="flex items-center gap-2 overflow-x-auto py-1 px-1 scrollbar-none scroll-smooth min-w-full"
+          >
+            {visibleApps.map((app, idx) => {
+              const isActive = idx === activeIndex;
+              const AppIcon = app.Icon;
+              return (
+                <button
+                  key={app.id}
+                  ref={(el) => (selectorChipRefs.current[idx] = el)}
+                  onClick={() => scrollToApp(idx)}
+                  className={`group relative flex items-center gap-2.5 rounded-xl px-3.5 py-2 text-xs font-medium transition-all shrink-0 select-none cursor-pointer ${
+                    isActive
+                      ? "text-slate-950 dark:text-white font-semibold"
+                      : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                  }`}
+                >
+                  {/* Fluid Active Sliding Pill */}
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeAppSelectorPill"
+                      className="absolute inset-0 rounded-xl bg-white dark:bg-surface shadow-[0_2px_12px_rgba(0,0,0,0.08)] dark:shadow-[0_2px_16px_rgba(0,0,0,0.4)] border border-slate-300/80 dark:border-white/15"
+                      transition={{ type: "spring", stiffness: 380, damping: 28 }}
+                    />
+                  )}
+
+                  {/* App Icon Badge */}
+                  <div
+                    className={`relative z-10 flex h-7 w-7 items-center justify-center rounded-lg transition-all duration-300 ${
+                      isActive
+                        ? "shadow-sm scale-105"
+                        : "opacity-75 group-hover:opacity-100 group-hover:scale-105"
+                    }`}
+                    style={{
+                      backgroundColor: isActive ? app.accent : `${app.accent}18`,
+                      color: isActive ? "#ffffff" : app.accent,
+                    }}
+                  >
+                    <AppIcon className="h-3.5 w-3.5" />
+                  </div>
+
+                  {/* Number & Name */}
+                  <div className="relative z-10 flex items-center gap-1.5">
+                    <span
+                      className={`font-mono text-[10px] font-bold ${
+                        isActive
+                          ? "text-slate-500 dark:text-slate-400"
+                          : "text-slate-400 dark:text-slate-500"
+                      }`}
+                    >
+                      {app.no}
+                    </span>
+                    <span className="font-semibold text-xs tracking-tight whitespace-nowrap">
+                      {app.name}
+                    </span>
+                  </div>
+
+                  {/* Active Virtue Micro Badge */}
+                  {isActive && (
+                    <span
+                      className="relative z-10 hidden sm:inline-flex items-center rounded-md px-1.5 py-0.5 text-[9px] font-bold tracking-wider uppercase"
+                      style={{
+                        backgroundColor: `${app.accent}20`,
+                        color: app.accent,
+                      }}
+                    >
+                      {app.virtue}
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
         </div>
+
+        {/* Right Scroll Chevron */}
+        <button
+          type="button"
+          onClick={() => scrollSelector("right")}
+          aria-label="Scroll apps right"
+          className="hidden sm:flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-slate-200/80 dark:border-white/10 bg-white dark:bg-surface text-slate-700 dark:text-slate-300 shadow-sm hover:scale-105 hover:bg-slate-50 dark:hover:bg-white/10 active:scale-95 transition-all z-20 cursor-pointer"
+        >
+          <ChevronRight className="h-4 w-4" />
+        </button>
       </div>
 
       {/* Main Split-Screen Pinned Stage */}
