@@ -11,7 +11,7 @@ const Tile = ({ className = "", i, children, testid }) => (
     viewport={{ once: true, amount: 0.15 }}
     transition={{ duration: 0.8, delay: i * 0.07, ease: [0.16, 1, 0.3, 1] }}
     whileHover={{ y: -6 }}
-    className={`group relative overflow-hidden rounded-[28px] border hairline bg-surface p-7 ${className}`}
+    className={`group relative overflow-hidden rounded-[28px] border border-slate-200 dark:border-white/10 bg-white dark:bg-surface p-7 shadow-sm ${className}`}
   >
     {children}
   </motion.div>
@@ -19,9 +19,9 @@ const Tile = ({ className = "", i, children, testid }) => (
 
 const Head = ({ Icon, title, text }) => (
   <>
-    <Icon className="h-6 w-6 transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110" />
-    <h4 className="mt-auto font-display text-xl font-medium tracking-tight sm:text-2xl">{title}</h4>
-    <p className="mt-2 text-sm leading-relaxed text-dim">{text}</p>
+    <Icon className="h-6 w-6 text-slate-900 dark:text-white transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110" />
+    <h4 className="mt-auto font-display text-xl font-semibold tracking-tight sm:text-2xl text-slate-950 dark:text-white">{title}</h4>
+    <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-300 font-normal">{text}</p>
   </>
 );
 
@@ -56,9 +56,9 @@ export const Bento = () => {
         </Tile>
         <Tile i={1} testid="bento-privacy" className="flex flex-col"><Head Icon={ShieldCheck} title={bento.swiftTitle || "Privacy first"} text={bento.swiftDesc || "We treat your photos, plants and meals as yours. Always."} /></Tile>
         <Tile i={2} testid="bento-theme" className="flex flex-col">
-          <div className="flex items-center justify-between"><SunMoon className="h-6 w-6" /><ThemeToggle testid="bento-theme-toggle" /></div>
-          <h4 className="mt-auto font-display text-xl font-medium tracking-tight sm:text-2xl">Day & night</h4>
-          <p className="mt-2 text-sm text-dim">Go on — flip the switch. Our apps glow in both.</p>
+          <div className="flex items-center justify-between"><SunMoon className="h-6 w-6 text-slate-900 dark:text-white" /><ThemeToggle testid="bento-theme-toggle" /></div>
+          <h4 className="mt-auto font-display text-xl font-semibold tracking-tight sm:text-2xl text-slate-950 dark:text-white">Day & night</h4>
+          <p className="mt-2 text-sm text-slate-700 dark:text-slate-300 font-normal">Go on — flip the switch. Our apps glow in both.</p>
         </Tile>
         <Tile i={3} testid="bento-speed" className="flex flex-col md:col-span-2"><Bars /><Head Icon={Zap} title={bento.hapticsTitle || "Tactile haptics"} text={bento.hapticsDesc || "No bloat, no maze of menus. Open the app, get it done, get on with your day."} /></Tile>
         <Tile i={4} testid="bento-widgets" className="flex flex-col md:col-span-2 lg:col-span-2"><Head Icon={LayoutGrid} title={bento.audioTitle || "Acoustic calm"} text={bento.audioDesc || "Clear numbers, calm layouts and information that reads in a heartbeat."} /></Tile>

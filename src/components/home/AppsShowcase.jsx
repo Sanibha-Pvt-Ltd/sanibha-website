@@ -87,10 +87,10 @@ export const AppsShowcase = () => {
       {/* Section Header */}
       <div className="mb-12 flex flex-col justify-between gap-8 px-2 md:flex-row md:items-end">
         <MaskLines
-          className="font-display text-4xl font-medium leading-[1] tracking-tight sm:text-6xl lg:text-7xl"
+          className="font-display text-4xl font-medium leading-[1] tracking-tight sm:text-6xl lg:text-7xl text-slate-950 dark:text-white"
           lines={[`${visibleApps.length} apps.`, <span className="font-serif italic font-normal">One light.</span>]}
         />
-        <Reveal className="max-w-sm text-dim">
+        <Reveal className="max-w-sm text-slate-700 dark:text-slate-300 font-medium leading-relaxed text-base">
           Each Sanibha utility is built around a single bright purpose. Tap the pinned phone — the live interface
           morphs as you scroll.
         </Reveal>
@@ -105,18 +105,18 @@ export const AppsShowcase = () => {
               <button
                 key={app.id}
                 onClick={() => scrollToApp(idx)}
-                className={`group flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold transition-all shadow-sm ${
+                className={`group flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-bold transition-all shadow-sm ${
                   isActive
-                    ? "border-ink bg-ink text-canvas shadow-md"
-                    : "border-ink/15 bg-surface text-ink hover:border-ink/40 hover:bg-surface"
+                    ? "border-slate-900 bg-slate-900 text-white dark:border-white dark:bg-white dark:text-slate-950 shadow-md"
+                    : "border-slate-300 bg-white text-slate-800 hover:border-slate-500 hover:bg-slate-50 dark:border-white/15 dark:bg-surface dark:text-white dark:hover:border-white/30"
                 }`}
               >
                 <span
                   className="h-2 w-2 rounded-full transition-transform group-hover:scale-125 shrink-0"
                   style={{ background: app.accent }}
                 />
-                <span className={`font-mono text-[10px] ${isActive ? "text-canvas/70" : "text-dim"}`}>{app.no}</span>
-                <span className="font-semibold">{app.name}</span>
+                <span className={`font-mono text-[10px] ${isActive ? "text-white/80 dark:text-black/70" : "text-slate-500 dark:text-slate-400"}`}>{app.no}</span>
+                <span>{app.name}</span>
               </button>
             );
           })}
@@ -136,9 +136,9 @@ export const AppsShowcase = () => {
                 key={app.id}
                 ref={(el) => (itemRefs.current[idx] = el)}
                 data-index={idx}
-                className="relative min-h-[500px] flex flex-col justify-center rounded-[36px] border hairline bg-surface/90 p-8 sm:p-12 backdrop-blur-md transition-all duration-700 shadow-sm"
+                className="relative min-h-[500px] flex flex-col justify-center rounded-[36px] border border-slate-200 dark:border-white/10 bg-white/95 dark:bg-surface/90 p-8 sm:p-12 backdrop-blur-md transition-all duration-700 shadow-md"
                 style={{
-                  borderColor: isActive ? "rgb(var(--line) / 0.25)" : undefined,
+                  borderColor: isActive ? "rgba(15, 23, 42, 0.35)" : undefined,
                   boxShadow: isActive ? `0 20px 50px -10px ${app.glow}` : undefined,
                 }}
               >
@@ -158,28 +158,32 @@ export const AppsShowcase = () => {
                       >
                         <Icon className="h-5 w-5 text-black" />
                       </span>
-                      <span className="eyebrow font-semibold">
+                      <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-slate-800 dark:text-slate-200">
                         {app.no} — {app.virtue}
                       </span>
                     </div>
 
-                    <span className="font-mono text-xs font-semibold text-dim">
+                    <span className="font-mono text-xs font-bold text-slate-700 dark:text-slate-300">
                       {idx + 1} / {visibleApps.length}
                     </span>
                   </div>
 
                   {/* Title & Tagline */}
-                  <h3 className="mt-8 font-display text-4xl font-medium tracking-tight sm:text-5xl text-ink">
+                  <h3 className="mt-8 font-display text-4xl font-medium tracking-tight sm:text-5xl text-slate-950 dark:text-white">
                     {app.name}
                   </h3>
-                  <p className="mt-3 font-serif text-2xl italic text-ink/85">{app.tagline}</p>
-                  <p className="mt-6 max-w-md leading-relaxed text-dim">{app.blurb}</p>
+                  <p className="mt-3 font-serif text-2xl sm:text-3xl italic text-slate-900 dark:text-slate-100 font-normal">
+                    {app.tagline}
+                  </p>
+                  <p className="mt-6 max-w-md leading-relaxed text-slate-700 dark:text-slate-300 text-base font-normal">
+                    {app.blurb}
+                  </p>
 
                   {/* Feature Checklist */}
                   <ul className="my-8 grid gap-2.5 sm:grid-cols-2">
                     {app.features.map((f) => (
-                      <li key={f} className="flex items-center gap-2.5 text-sm font-medium text-ink/85">
-                        <span className="h-1.5 w-1.5 rounded-full shrink-0" style={{ background: app.accent }} />
+                      <li key={f} className="flex items-center gap-2.5 text-sm font-semibold text-slate-800 dark:text-slate-200">
+                        <span className="h-2 w-2 rounded-full shrink-0" style={{ background: app.accent }} />
                         <span>{f}</span>
                       </li>
                     ))}
@@ -188,17 +192,17 @@ export const AppsShowcase = () => {
                   {/* Discover Link */}
                   <Link
                     to="/apps"
-                    className="group inline-flex items-center gap-2 font-semibold text-ink"
+                    className="group inline-flex items-center gap-2 font-bold text-slate-950 dark:text-white"
                   >
-                    <span className="border-b border-ink/30 pb-0.5 transition-colors group-hover:border-ink">
+                    <span className="border-b-2 border-slate-900 dark:border-white pb-0.5 transition-colors group-hover:border-indigo-500">
                       Discover {app.name}
                     </span>
                     <ArrowUpRight className="h-4 w-4 transition-transform group-hover:rotate-45" />
                   </Link>
 
                   {/* Mobile-Only Phone Preview (Shown when split screen collapses on mobile) */}
-                  <div className="mt-8 flex flex-col items-center justify-center lg:hidden pt-6 border-t hairline">
-                    <p className="eyebrow mb-4">Live interactive preview</p>
+                  <div className="mt-8 flex flex-col items-center justify-center lg:hidden pt-6 border-t border-slate-200 dark:border-white/10">
+                    <p className="font-mono text-xs uppercase tracking-[0.2em] font-bold text-slate-800 dark:text-slate-200 mb-4">Live interactive preview</p>
                     <div className="scale-90 sm:scale-100">
                       <PhoneFrame testid={`app-mobile-${app.id}-phone`} appId={app.id}>
                         <app.Screen id={`mobile-${app.id}`} />
@@ -247,14 +251,18 @@ export const AppsShowcase = () => {
           <div className="relative z-10 mb-5 flex items-center justify-between w-full max-w-[340px] px-2">
             <div className="flex items-center gap-2">
               <span
-                className="h-2 w-2 rounded-full animate-pulse shadow-sm"
+                className="h-2.5 w-2.5 rounded-full animate-pulse shadow-sm"
                 style={{ background: currentApp.accent }}
               />
-              <span className="font-mono text-[11px] font-bold text-ink">
+              <span className="font-mono text-xs font-bold text-slate-950 dark:text-white tracking-wide">
                 {currentApp.no} · {currentApp.name}
               </span>
             </div>
-            <span className={`eyebrow text-[10px] font-bold ${isAppComingSoon?.(currentApp.id) ? "text-amber-600 dark:text-amber-400" : "text-emerald-600 dark:text-emerald-400"}`}>
+            <span className={`rounded-full px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-wider ${
+              isAppComingSoon?.(currentApp.id)
+                ? "bg-amber-100 text-amber-900 border border-amber-300 dark:bg-amber-950/80 dark:text-amber-300 dark:border-amber-700"
+                : "bg-emerald-100 text-emerald-900 border border-emerald-300 dark:bg-emerald-950/80 dark:text-emerald-300 dark:border-emerald-700"
+            }`}>
               {isAppComingSoon?.(currentApp.id) ? "Coming soon" : "Try it — it's live"}
             </span>
           </div>
@@ -282,7 +290,7 @@ export const AppsShowcase = () => {
             <button
               onClick={prevApp}
               aria-label="Previous app"
-              className="flex items-center gap-1 rounded-full border border-ink/15 bg-surface px-3 py-1.5 font-medium text-ink shadow-sm hover:border-ink/30 hover:bg-canvas transition-all active:scale-95"
+              className="flex items-center gap-1.5 rounded-full border border-slate-300 dark:border-white/15 bg-white dark:bg-surface px-4 py-2 font-bold text-slate-900 dark:text-white shadow-sm hover:border-slate-400 hover:bg-slate-50 dark:hover:bg-white/10 transition-all active:scale-95"
             >
               <ChevronLeft className="h-3.5 w-3.5" />
               <span>Prev</span>
@@ -295,10 +303,10 @@ export const AppsShowcase = () => {
                   key={a.id}
                   onClick={() => scrollToApp(i)}
                   aria-label={`Jump to ${a.name}`}
-                  className={`h-1.5 rounded-full transition-all ${
+                  className={`h-2 rounded-full transition-all ${
                     i === activeIndex
-                      ? "w-5 bg-ink shadow-sm"
-                      : "w-1.5 bg-ink/25 hover:bg-ink/50"
+                      ? "w-6 bg-slate-950 dark:bg-white shadow-sm"
+                      : "w-2 bg-slate-300 hover:bg-slate-400 dark:bg-white/25 dark:hover:bg-white/50"
                   }`}
                 />
               ))}
@@ -307,7 +315,7 @@ export const AppsShowcase = () => {
             <button
               onClick={nextApp}
               aria-label="Next app"
-              className="flex items-center gap-1 rounded-full border border-ink/15 bg-surface px-3 py-1.5 font-medium text-ink shadow-sm hover:border-ink/30 hover:bg-canvas transition-all active:scale-95"
+              className="flex items-center gap-1.5 rounded-full border border-slate-300 dark:border-white/15 bg-white dark:bg-surface px-4 py-2 font-bold text-slate-900 dark:text-white shadow-sm hover:border-slate-400 hover:bg-slate-50 dark:hover:bg-white/10 transition-all active:scale-95"
             >
               <span>Next</span>
               <ChevronRight className="h-3.5 w-3.5" />

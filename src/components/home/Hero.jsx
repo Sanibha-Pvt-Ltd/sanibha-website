@@ -241,8 +241,8 @@ export const Hero = () => {
       <div className="relative mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1.1fr_1fr]">
         {/* Left Column: Typography & CTAs */}
         <motion.div style={{ y: textY }} className="relative z-10">
-          <motion.p {...fade(0.1)} className="eyebrow mb-8 flex items-center gap-3">
-            <span className="h-px w-10 bg-ink/40" />
+          <motion.p {...fade(0.1)} className="font-mono text-xs uppercase tracking-[0.22em] font-bold text-slate-800 dark:text-slate-200 mb-8 flex items-center gap-3">
+            <span className="h-px w-10 bg-slate-800/40 dark:bg-white/40" />
             {hero.eyebrow}
           </motion.p>
           <MaskLines
@@ -250,7 +250,7 @@ export const Hero = () => {
             play={done}
             delay={0.15}
             testid="hero-heading"
-            className="font-display text-[3.1rem] font-medium leading-[0.95] tracking-[-0.04em] sm:text-7xl lg:text-[6.6rem]"
+            className="font-display text-[3.1rem] font-medium leading-[0.95] tracking-[-0.04em] sm:text-7xl lg:text-[6.6rem] text-slate-950 dark:text-white"
             lines={[
               hero.headingPart1,
               <span key="highlight" className="font-serif font-normal italic prism-text pr-2">
@@ -259,7 +259,7 @@ export const Hero = () => {
               hero.headingPart2,
             ]}
           />
-          <motion.p {...fade(0.7)} className="mt-8 max-w-md text-base leading-relaxed text-dim sm:text-lg">
+          <motion.p {...fade(0.7)} className="mt-8 max-w-md text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg font-normal">
             {hero.description}
           </motion.p>
           <motion.div {...fade(0.85)} className="mt-10 flex flex-wrap items-center gap-4">
@@ -267,7 +267,7 @@ export const Hero = () => {
               <Link
                 to="/apps"
                 data-testid="hero-explore-apps-btn"
-                className="group flex items-center gap-3 rounded-full bg-ink py-3 pl-6 pr-3 font-semibold text-canvas"
+                className="group flex items-center gap-3 rounded-full bg-slate-900 dark:bg-white py-3 pl-6 pr-3 font-semibold text-white dark:text-slate-950 shadow-md"
               >
                 {hero.ctaPrimaryText}
                 <span className="flex h-8 w-8 items-center justify-center rounded-full prism-bg text-white transition-transform duration-500 group-hover:rotate-[-45deg]">
@@ -278,7 +278,7 @@ export const Hero = () => {
             <Link
               to="/about"
               data-testid="hero-about-link"
-              className="border-b border-ink/30 pb-0.5 text-sm font-semibold transition-colors hover:border-ink"
+              className="border-b-2 border-slate-900/40 dark:border-white/40 pb-0.5 text-sm font-bold text-slate-900 dark:text-white transition-colors hover:border-slate-900 dark:hover:border-white"
             >
               {hero.ctaSecondaryText}
             </Link>

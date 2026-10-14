@@ -103,12 +103,12 @@
         border: 1px solid rgb(var(--line) / 0.08);
     }
     .eyebrow {
-        @apply font-mono text-xs uppercase tracking-[0.22em] text-dim;
+        @apply font-mono text-xs uppercase tracking-[0.22em] text-slate-800 dark:text-slate-200 font-bold;
     }
-    .hairline { border-color: rgb(var(--line) / 0.14); }
+    .hairline { border-color: rgb(var(--line) / 0.16); }
     .outline-text {
         color: transparent;
-        -webkit-text-stroke: 1.2px rgb(var(--fg) / 0.55);
+        -webkit-text-stroke: 1.5px rgb(var(--fg) / 0.85);
     }
 }
 

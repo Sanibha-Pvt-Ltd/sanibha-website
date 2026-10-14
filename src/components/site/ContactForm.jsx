@@ -27,12 +27,12 @@ const empty = { name: "", email: "", app_interest: "General", message: "" };
 
 const Field = ({ label, children }) => (
   <label className="block">
-    <span className="eyebrow">{label}</span>
+    <span className="font-mono text-xs uppercase tracking-[0.2em] font-bold text-slate-800 dark:text-slate-200">{label}</span>
     {children}
   </label>
 );
 
-const inputCls = "mt-2 w-full border-b hairline bg-transparent pb-3 font-display text-xl outline-none transition-colors placeholder:text-dim/60 focus:border-ink";
+const inputCls = "mt-2 w-full border-b border-slate-300 dark:border-white/20 bg-transparent pb-3 font-display text-xl text-slate-900 dark:text-white outline-none transition-colors placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-slate-900 dark:focus:border-white";
 
 export const ContactForm = () => {
   const [form, setForm] = useState(empty);

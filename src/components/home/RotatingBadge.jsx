@@ -9,7 +9,7 @@ export const RotatingBadge = ({ size = "h-24 w-24" }) => {
     <div className={`relative ${size}`}>
       <svg viewBox="0 0 100 100" className="spin-slow h-full w-full">
         <defs><path id="badge-circle" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" /></defs>
-        <text className="fill-current font-mono text-[9.4px] uppercase tracking-[0.18em]">
+        <text className="fill-slate-900 dark:fill-slate-100 font-mono text-[9.4px] uppercase tracking-[0.18em] font-bold">
           <textPath href="#badge-circle">{text}</textPath>
         </text>
       </svg>

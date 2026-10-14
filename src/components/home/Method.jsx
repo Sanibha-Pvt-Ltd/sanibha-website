@@ -11,14 +11,14 @@ const STEPS = [
 ];
 
 const Panel = ({ s }) => (
-  <div className="group flex h-full flex-col justify-between rounded-[32px] border hairline bg-surface p-8 sm:p-10">
+  <div className="group flex h-full flex-col justify-between rounded-[32px] border border-slate-200 dark:border-white/10 bg-white dark:bg-surface p-8 sm:p-10 shadow-sm">
     <div className="flex items-start justify-between">
       <span className="font-display text-7xl font-semibold tracking-tighter outline-text sm:text-8xl">{s.n}</span>
-      <s.I className="h-8 w-8 transition-transform duration-700 group-hover:rotate-180" />
+      <s.I className="h-8 w-8 text-slate-900 dark:text-white transition-transform duration-700 group-hover:rotate-180" />
     </div>
     <div>
-      <h4 className="font-serif text-5xl italic">{s.t}</h4>
-      <p className="mt-4 max-w-sm leading-relaxed text-dim">{s.d}</p>
+      <h4 className="font-serif text-5xl italic text-slate-950 dark:text-white">{s.t}</h4>
+      <p className="mt-4 max-w-sm leading-relaxed text-slate-700 dark:text-slate-300 text-base font-normal">{s.d}</p>
     </div>
   </div>
 );

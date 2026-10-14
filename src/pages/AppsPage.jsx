@@ -35,23 +35,23 @@ const AppDetail = ({ app, flip }) => {
             <span className="flex h-12 w-12 items-center justify-center rounded-2xl" style={{ background: app.accent }}><Icon className="h-6 w-6 text-black" /></span>
             <span className="eyebrow">{app.no} — {app.virtue}</span>
           </Reveal>
-          <Reveal delay={0.05}><h2 className="mt-8 font-display text-5xl font-medium tracking-tight sm:text-6xl">{app.name}</h2></Reveal>
-          <Reveal delay={0.1}><p className="mt-4 font-serif text-3xl italic leading-tight text-dim">{app.tagline}</p></Reveal>
-          <Reveal delay={0.15}><p className="mt-6 max-w-lg leading-relaxed text-dim">{app.blurb}</p></Reveal>
-          <ul className="mt-10 border-t hairline">
+          <Reveal delay={0.05}><h2 className="mt-8 font-display text-5xl font-medium tracking-tight sm:text-6xl text-slate-950 dark:text-white">{app.name}</h2></Reveal>
+          <Reveal delay={0.1}><p className="mt-4 font-serif text-3xl italic leading-tight text-slate-900 dark:text-slate-100">{app.tagline}</p></Reveal>
+          <Reveal delay={0.15}><p className="mt-6 max-w-lg leading-relaxed text-slate-700 dark:text-slate-300 font-normal">{app.blurb}</p></Reveal>
+          <ul className="mt-10 border-t border-slate-200 dark:border-white/10">
             {app.features.map((f, i) => (
-              <Reveal key={f} delay={0.05 * i} className="group flex items-center justify-between border-b hairline py-4">
-                <span className="flex items-center gap-4"><span className="font-mono text-xs text-dim">0{i + 1}</span><span className="text-lg transition-transform duration-500 group-hover:translate-x-2">{f}</span></span>
+              <Reveal key={f} delay={0.05 * i} className="group flex items-center justify-between border-b border-slate-200 dark:border-white/10 py-4">
+                <span className="flex items-center gap-4"><span className="font-mono text-xs font-bold text-slate-600 dark:text-slate-400">0{i + 1}</span><span className="text-lg font-semibold text-slate-900 dark:text-white transition-transform duration-500 group-hover:translate-x-2">{f}</span></span>
                 <span className="h-2 w-2 rounded-full transition-transform duration-500 group-hover:scale-[2.5]" style={{ background: app.accent }} />
               </Reveal>
             ))}
           </ul>
           <Reveal delay={0.2} className="mt-10 flex flex-wrap gap-3">
-            <a href="#" onClick={(e) => e.preventDefault()} data-testid={`apps-page-${app.id}-appstore-btn`} className="flex items-center gap-3 rounded-2xl bg-ink px-5 py-3 text-canvas transition-transform hover:scale-[1.03]">
+            <a href="#" onClick={(e) => e.preventDefault()} data-testid={`apps-page-${app.id}-appstore-btn`} className="flex items-center gap-3 rounded-2xl bg-slate-900 dark:bg-white px-5 py-3 text-white dark:text-slate-950 font-semibold shadow-md transition-transform hover:scale-[1.03]">
               <Apple className="h-6 w-6" />
               <span className="leading-tight"><span className="block text-[10px] uppercase tracking-wider opacity-80">Download on the</span><span className="font-semibold">App Store</span></span>
             </a>
-            <Link to="/contact" data-testid={`apps-page-${app.id}-feedback-link`} className="group flex items-center gap-2 rounded-2xl border hairline px-5 py-3 font-semibold">Share feedback <ArrowUpRight className="h-4 w-4 transition-transform group-hover:rotate-45" /></Link>
+            <Link to="/contact" data-testid={`apps-page-${app.id}-feedback-link`} className="group flex items-center gap-2 rounded-2xl border border-slate-300 dark:border-white/15 bg-white dark:bg-surface px-5 py-3 font-semibold text-slate-900 dark:text-white shadow-sm hover:border-slate-400">Share feedback <ArrowUpRight className="h-4 w-4 transition-transform group-hover:rotate-45" /></Link>
           </Reveal>
         </div>
       </div>
