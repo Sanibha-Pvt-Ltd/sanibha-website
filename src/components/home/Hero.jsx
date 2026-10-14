@@ -17,6 +17,7 @@ import { useSiteContent } from "@/context/SiteContentContext";
 const HERO_APPS = [
   {
     id: "cleaner",
+    appId: "storage-cleaner",
     name: "Phone Cleaner",
     Screen: CleanerScreen,
     testid: "hero-phone-cleaner",
@@ -24,6 +25,7 @@ const HERO_APPS = [
   },
   {
     id: "baby",
+    appId: "baby-tracker",
     name: "Baby Tracker",
     Screen: BabyScreen,
     testid: "hero-phone-baby",
@@ -31,6 +33,7 @@ const HERO_APPS = [
   },
   {
     id: "resume",
+    appId: "resume-builder",
     name: "AI Resume",
     Screen: ResumeScreen,
     testid: "hero-phone-resume",
@@ -151,6 +154,7 @@ const PhoneStack = ({
             <div className="relative">
               <PhoneFrame
                 testid={app.testid}
+                appId={app.appId}
                 className={
                   isCenter
                     ? "shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] ring-1 ring-white/10"
@@ -314,7 +318,7 @@ export const Hero = () => {
                     transition={{ duration: 0.6, ease: easeOut }}
                     className="absolute"
                   >
-                    <PhoneFrame testid="hero-phone-mobile">
+                    <PhoneFrame testid="hero-phone-mobile" appId={app.appId}>
                       <ScreenComponent id={`hero-mobile-${app.id}`} />
                     </PhoneFrame>
                   </motion.div>

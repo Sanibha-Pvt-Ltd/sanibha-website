@@ -75,6 +75,22 @@ export const DEFAULT_CONFIG = {
     "immigration-tracker": true,
   },
 
+  // 1b. App Status (live vs coming-soon)
+  appStatus: {
+    "storage-cleaner": "live",
+    "baby-tracker": "live",
+    "resume-builder": "live",
+    "calorie-counter": "live",
+    "plant-identifier": "live",
+    "habit-tracker": "live",
+    "fax": "live",
+    "sleep-tracker": "live",
+    "tv-remote": "live",
+    "recipe-importer": "live",
+    "pdf-toolkit": "live",
+    "immigration-tracker": "live",
+  },
+
   // 2. Hero Section
   hero: {
     eyebrow: "Sanibha · iOS utility studio",
@@ -254,6 +270,10 @@ export const SiteContentProvider = ({ children }) => {
             ...DEFAULT_CONFIG.appVisibility,
             ...(parsed.appVisibility || {}),
           },
+          appStatus: {
+            ...DEFAULT_CONFIG.appStatus,
+            ...(parsed.appStatus || {}),
+          },
           company: {
             ...DEFAULT_CONFIG.company,
             ...(parsed.company || {}),
@@ -327,6 +347,47 @@ export const SiteContentProvider = ({ children }) => {
     });
   };
 
+  const setAppStatus = (appId, status) => {
+    saveConfig({
+      ...config,
+      appStatus: {
+        ...(config.appStatus || DEFAULT_CONFIG.appStatus),
+        [appId]: status,
+      },
+    });
+  };
+
+  const toggleAppStatus = (appId) => {
+    const current = config.appStatus?.[appId] || "live";
+    const next = current === "live" ? "coming-soon" : "live";
+    setAppStatus(appId, next);
+    return next;
+  };
+
+  const setAllAppsStatus = (status) => {
+    const updated = {};
+    Object.keys(DEFAULT_CONFIG.appStatus).forEach((id) => {
+      updated[id] = status;
+    });
+    saveConfig({
+      ...config,
+      appStatus: updated,
+    });
+  };
+
+  const isAppComingSoon = (appId) => {
+    if (!appId) return false;
+    const mapped =
+      appId === "cleaner"
+        ? "storage-cleaner"
+        : appId === "baby"
+        ? "baby-tracker"
+        : appId === "resume"
+        ? "resume-builder"
+        : appId;
+    return (config?.appStatus?.[mapped] || DEFAULT_CONFIG.appStatus[mapped]) === "coming-soon";
+  };
+
   const resetToDefaults = () => {
     saveConfig(DEFAULT_CONFIG);
   };
@@ -384,6 +445,11 @@ export const SiteContentProvider = ({ children }) => {
         updateSection,
         toggleAppVisibility,
         setAllAppsVisibility,
+        appStatus: config.appStatus || DEFAULT_CONFIG.appStatus,
+        setAppStatus,
+        toggleAppStatus,
+        setAllAppsStatus,
+        isAppComingSoon,
         resetToDefaults,
         exportJSON,
         importJSON,

@@ -8,7 +8,7 @@ import { MaskLines, Reveal } from "@/components/site/Reveal";
 import { useSiteContent } from "@/context/SiteContentContext";
 
 export const AppsShowcase = () => {
-  const { config } = useSiteContent();
+  const { config, isAppComingSoon } = useSiteContent();
   const visibleApps = APPS.filter((a) => config.appVisibility[a.id] !== false);
   const [activeIndex, setActiveIndex] = useState(0);
   const itemRefs = useRef([]);
@@ -200,7 +200,7 @@ export const AppsShowcase = () => {
                   <div className="mt-8 flex flex-col items-center justify-center lg:hidden pt-6 border-t hairline">
                     <p className="eyebrow mb-4">Live interactive preview</p>
                     <div className="scale-90 sm:scale-100">
-                      <PhoneFrame testid={`app-mobile-${app.id}-phone`}>
+                      <PhoneFrame testid={`app-mobile-${app.id}-phone`} appId={app.id}>
                         <app.Screen id={`mobile-${app.id}`} />
                       </PhoneFrame>
                     </div>
@@ -254,12 +254,14 @@ export const AppsShowcase = () => {
                 {currentApp.no} · {currentApp.name}
               </span>
             </div>
-            <span className="eyebrow text-[10px]">Try it — it's live</span>
+            <span className={`eyebrow text-[10px] ${isAppComingSoon?.(currentApp.id) ? "text-amber-400" : ""}`}>
+              {isAppComingSoon?.(currentApp.id) ? "Coming soon" : "Try it — it's live"}
+            </span>
           </div>
 
           {/* Interactive Phone Frame with Screen Transition */}
           <div className="relative z-10 transition-transform duration-700 hover:scale-[1.02]">
-            <PhoneFrame testid="pinned-stage-phone" className="shadow-2xl shadow-black/80">
+            <PhoneFrame testid="pinned-stage-phone" appId={currentApp.id} className="shadow-2xl shadow-black/80">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentApp.id}

@@ -40,6 +40,11 @@ export default function AdminPage() {
     updateSection,
     toggleAppVisibility,
     setAllAppsVisibility,
+    appStatus = {},
+    setAppStatus,
+    toggleAppStatus,
+    setAllAppsStatus,
+    isAppComingSoon,
     resetToDefaults,
     exportJSON,
     importJSON,
@@ -165,6 +170,12 @@ export default function AdminPage() {
   // AUTHENTICATED ADMIN DASHBOARD
   // -------------------------------------------------------------
   const liveCount = Object.values(config.appVisibility).filter(Boolean).length;
+  const comingSoonCount = APPS.filter(
+    (a) => (config?.appStatus?.[a.id] || "live") === "coming-soon"
+  ).length;
+  const interactiveLiveCount = APPS.filter(
+    (a) => config.appVisibility[a.id] !== false && (config?.appStatus?.[a.id] || "live") === "live"
+  ).length;
   const activeFontId = config?.fontTheme || "original";
   const activeFont = (fontThemes && fontThemes.find((f) => f.id === activeFontId)) || fontThemes[0] || { name: "Sanibha 1:1 Original" };
 
@@ -250,7 +261,12 @@ export default function AdminPage() {
         {/* Navigation Tabs */}
         <div className="flex flex-wrap gap-2 border-b border-white/10 pb-4">
           {[
-            { id: "apps", label: "Apps Visibility", icon: Smartphone, badge: `${liveCount}/12 Live` },
+            {
+              id: "apps",
+              label: "Apps & Interactive State",
+              icon: Smartphone,
+              badge: comingSoonCount > 0 ? `${interactiveLiveCount} Live · ${comingSoonCount} Coming Soon` : `${liveCount}/12 Live`,
+            },
             { id: "typography", label: "Typography & Font", icon: Type, badge: activeFont.name },
             { id: "hero", label: "Hero Section", icon: Layout },
             { id: "bento", label: "Bento Grid", icon: Grid },
@@ -281,47 +297,68 @@ export default function AdminPage() {
           ))}
         </div>
 
-        {/* TAB 1: APPS LIVE / OFFLINE TOGGLE CONTROLS */}
+        {/* TAB 1: APPS DISPLAY & INTERACTIVE STATUS CONTROLS */}
         {activeTab === "apps" && (
           <div className="mt-8 space-y-6">
-            <div className="flex flex-col justify-between gap-4 rounded-3xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-xl md:flex-row md:items-center">
+            <div className="flex flex-col justify-between gap-6 rounded-3xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-xl lg:flex-row lg:items-center">
               <div>
-                <h2 className="font-display text-xl font-bold text-white">
-                  iOS Apps Display Controls ({liveCount} of 12 Live)
+                <h2 className="font-display text-xl font-bold text-white flex flex-wrap items-center gap-2">
+                  <span>Interactive Apps & Coming Soon Controls</span>
+                  <span className="rounded-full bg-emerald-500/20 border border-emerald-500/30 px-2.5 py-0.5 font-mono text-[11px] text-emerald-300">
+                    {interactiveLiveCount} Live
+                  </span>
+                  {comingSoonCount > 0 && (
+                    <span className="rounded-full bg-rose-500/20 border border-rose-500/30 px-2.5 py-0.5 font-mono text-[11px] text-rose-300">
+                      {comingSoonCount} Coming Soon
+                    </span>
+                  )}
                 </h2>
-                <p className="mt-1 text-sm text-white/60 max-w-2xl">
-                  Toggle any app between <span className="text-emerald-400 font-semibold">Live</span> and{" "}
-                  <span className="text-white/40 font-semibold">Offline</span>. Offline apps are immediately hidden
-                  from the Homepage showcase and the collection page.
+                <p className="mt-1 text-sm text-white/60 max-w-2xl leading-relaxed">
+                  Switch any interactive app between <span className="text-emerald-400 font-semibold">Live</span> and{" "}
+                  <span className="text-rose-400 font-semibold">Coming Soon</span>. When an app is set to{" "}
+                  <span className="text-rose-300 font-medium">Coming Soon</span>, its interactive phone window is automatically blurred, all buttons and controls are frozen, and the official red rubber stamp is overlaid.
                 </p>
               </div>
 
-              <div className="flex items-center gap-2">
+              {/* Global Quick Action Buttons */}
+              <div className="flex flex-wrap items-center gap-2">
                 <button
                   onClick={() => {
-                    setAllAppsVisibility(true);
-                    toast.success("All 12 apps are now Live");
+                    setAllAppsStatus("live");
+                    toast.success("All 12 interactive apps are now LIVE (Full controls operable)");
                   }}
-                  className="rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-2 text-xs font-semibold text-emerald-300 hover:bg-emerald-500/20"
+                  className="rounded-xl border border-emerald-500/40 bg-emerald-500/20 px-3.5 py-2 text-xs font-semibold text-emerald-300 hover:bg-emerald-500/30 transition-all flex items-center gap-1.5"
                 >
-                  Enable All (12)
+                  <Check className="h-3.5 w-3.5 stroke-[3]" />
+                  <span>Set All Live</span>
                 </button>
                 <button
                   onClick={() => {
-                    setAllAppsVisibility(false);
-                    toast.success("All apps set to Offline");
+                    setAllAppsStatus("coming-soon");
+                    toast.warning("All 12 interactive apps are now COMING SOON (Frozen & Stamped)");
                   }}
-                  className="rounded-xl border border-white/10 bg-white/5 px-3.5 py-2 text-xs font-semibold text-white/60 hover:bg-white/10"
+                  className="rounded-xl border border-rose-500/40 bg-rose-500/20 px-3.5 py-2 text-xs font-semibold text-rose-300 hover:bg-rose-500/30 transition-all flex items-center gap-1.5"
                 >
-                  Disable All
+                  <AlertCircle className="h-3.5 w-3.5" />
+                  <span>Set All Coming Soon</span>
+                </button>
+                <button
+                  onClick={() => {
+                    setAllAppsVisibility(true);
+                    toast.success("All 12 apps are visible on site");
+                  }}
+                  className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs text-white/70 hover:bg-white/10"
+                >
+                  Show All
                 </button>
               </div>
             </div>
 
             {/* Apps Grid */}
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {APPS.map((app) => {
-                const isLive = config.appVisibility[app.id] !== false;
+                const isVisible = config.appVisibility[app.id] !== false;
+                const isComingSoon = (config?.appStatus?.[app.id] || "live") === "coming-soon";
                 const Icon = app.Icon;
 
                 return (
@@ -329,18 +366,20 @@ export default function AdminPage() {
                     key={app.id}
                     layout
                     className={`relative flex flex-col justify-between rounded-3xl border p-5 transition-all ${
-                      isLive
-                        ? "border-white/15 bg-white/[0.04] shadow-lg shadow-black/40"
-                        : "border-white/5 bg-white/[0.01] opacity-60"
+                      !isVisible
+                        ? "border-white/5 bg-white/[0.01] opacity-50"
+                        : isComingSoon
+                        ? "border-rose-500/30 bg-rose-500/[0.03] shadow-lg shadow-black/40"
+                        : "border-white/15 bg-white/[0.04] shadow-lg shadow-black/40"
                     }`}
                   >
                     <div>
-                      {/* Top Row: Icon + Number + Status Badge */}
+                      {/* Top Row: Icon + Number + Status Badges */}
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
                           <span
                             className="flex h-10 w-10 items-center justify-center rounded-2xl"
-                            style={{ background: isLive ? app.accent : "#333" }}
+                            style={{ background: isVisible ? app.accent : "#333" }}
                           >
                             <Icon className="h-5 w-5 text-black" />
                           </span>
@@ -352,47 +391,88 @@ export default function AdminPage() {
                           </div>
                         </div>
 
-                        {/* Status Chip */}
+                        {/* Interactive Mode Badge */}
                         <span
                           className={`rounded-full px-2.5 py-0.5 font-mono text-[9px] font-bold uppercase tracking-wider border ${
-                            isLive
-                              ? "border-emerald-500/40 bg-emerald-500/20 text-emerald-300"
-                              : "border-white/10 bg-white/5 text-white/40"
+                            isComingSoon
+                              ? "border-rose-500/50 bg-rose-500/20 text-rose-300"
+                              : "border-emerald-500/40 bg-emerald-500/20 text-emerald-300"
                           }`}
                         >
-                          {isLive ? "LIVE" : "OFFLINE"}
+                          {isComingSoon ? "COMING SOON" : "LIVE DEMO"}
                         </span>
                       </div>
 
                       <p className="mt-3 font-serif text-sm italic text-white/70 line-clamp-1">{app.tagline}</p>
                       <p className="mt-1 text-xs text-white/50 line-clamp-2 leading-relaxed">{app.blurb}</p>
+
+                      {/* Visual Stamp Indicator when Coming Soon */}
+                      {isComingSoon && (
+                        <div className="mt-3 flex items-center gap-2 rounded-xl border border-rose-500/25 bg-rose-500/10 p-2.5 text-rose-200">
+                          <img
+                            src="/img/coming-soon-stamp.png"
+                            alt="Stamp"
+                            className="h-8 w-8 object-contain drop-shadow shrink-0"
+                          />
+                          <span className="text-[11px] font-medium leading-tight">
+                            Interactive screen is blurred, frozen & stamped with Coming Soon
+                          </span>
+                        </div>
+                      )}
                     </div>
 
-                    {/* Bottom Row: Toggle Button */}
-                    <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-4">
-                      <span className="text-xs text-white/50">
-                        {isLive ? "Visible on live site" : "Hidden from public view"}
-                      </span>
+                    {/* Bottom Controls Row */}
+                    <div className="mt-6 flex flex-col gap-3 border-t border-white/10 pt-4">
+                      {/* Interactive Mode Segmented Toggle */}
+                      <div>
+                        <span className="block font-mono text-[10px] uppercase tracking-wider text-white/50 mb-1.5">
+                          Interactive App Status
+                        </span>
+                        <div className="grid grid-cols-2 gap-1 rounded-2xl border border-white/10 bg-black/40 p-1">
+                          <button
+                            onClick={() => {
+                              setAppStatus(app.id, "live");
+                              toast.success(`${app.name} is now LIVE and interactive`);
+                            }}
+                            className={`flex items-center justify-center gap-1.5 rounded-xl py-2 text-xs font-semibold transition-all ${
+                              !isComingSoon
+                                ? "bg-emerald-500 text-black shadow-md font-bold"
+                                : "text-white/60 hover:text-white"
+                            }`}
+                          >
+                            <Check className="h-3 w-3 stroke-[3]" /> Live
+                          </button>
+                          <button
+                            onClick={() => {
+                              setAppStatus(app.id, "coming-soon");
+                              toast.warning(`${app.name} is now COMING SOON (Frozen & Stamped)`);
+                            }}
+                            className={`flex items-center justify-center gap-1.5 rounded-xl py-2 text-xs font-semibold transition-all ${
+                              isComingSoon
+                                ? "bg-rose-500 text-white shadow-md font-bold"
+                                : "text-white/60 hover:text-white"
+                            }`}
+                          >
+                            <AlertCircle className="h-3 w-3" /> Coming Soon
+                          </button>
+                        </div>
+                      </div>
 
-                      <button
-                        onClick={() => {
-                          toggleAppVisibility(app.id);
-                          toast.success(`${app.name} is now ${isLive ? "Offline" : "Live"}`);
-                        }}
-                        className={`flex items-center gap-2 rounded-2xl px-4 py-2 text-xs font-bold transition-all ${
-                          isLive
-                            ? "bg-emerald-500 text-black shadow-lg shadow-emerald-500/20 hover:bg-emerald-400"
-                            : "bg-white/10 text-white hover:bg-white/20"
-                        }`}
-                      >
-                        {isLive ? (
-                          <>
-                            <Check className="h-3.5 w-3.5 stroke-[3]" /> Live
-                          </>
-                        ) : (
-                          "Set Live"
-                        )}
-                      </button>
+                      {/* Public Visibility Toggle */}
+                      <div className="flex items-center justify-between pt-1">
+                        <span className="text-[11px] text-white/40">
+                          {isVisible ? "Visible on site" : "Hidden from site"}
+                        </span>
+                        <button
+                          onClick={() => {
+                            toggleAppVisibility(app.id);
+                            toast.success(`${app.name} is now ${isVisible ? "Hidden" : "Visible"}`);
+                          }}
+                          className="font-mono text-[11px] text-white/50 hover:text-white transition-colors underline underline-offset-4"
+                        >
+                          {isVisible ? "Hide from site" : "Show on site"}
+                        </button>
+                      </div>
                     </div>
                   </motion.div>
                 );

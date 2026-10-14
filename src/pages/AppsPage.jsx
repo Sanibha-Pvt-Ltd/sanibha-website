@@ -25,7 +25,9 @@ const AppDetail = ({ app, flip }) => {
             <div className="pointer-events-none absolute inset-0 blur-[90px] opacity-50" style={{ background: app.glow }} />
           </motion.div>
           <div className="absolute inset-0 flex items-center justify-center">
-            <PhoneFrame testid={`apps-page-${app.id}-phone`} className="shadow-2xl"><Screen id={`page-${app.id}`} /></PhoneFrame>
+            <PhoneFrame testid={`apps-page-${app.id}-phone`} appId={app.id} className="shadow-2xl">
+              <Screen id={`page-${app.id}`} />
+            </PhoneFrame>
           </div>
         </div>
         <div>
