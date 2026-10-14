@@ -384,6 +384,10 @@ export const SiteContentProvider = ({ children }) => {
         ? "baby-tracker"
         : appId === "resume"
         ? "resume-builder"
+        : appId === "fax"
+        ? "fax"
+        : appId === "remote"
+        ? "tv-remote"
         : appId;
     return (config?.appStatus?.[mapped] || DEFAULT_CONFIG.appStatus[mapped]) === "coming-soon";
   };

@@ -6,38 +6,38 @@ import { MaskLines } from "@/components/site/Reveal";
 import { Magnetic } from "@/components/site/Magnetic";
 import { PhoneFrame } from "@/components/phones/PhoneFrame";
 import { CleanerScreen } from "@/components/phones/CleanerScreen";
-import { BabyScreen } from "@/components/phones/BabyScreen";
-import { ResumeScreen } from "@/components/phones/ResumeScreen";
+import { FaxScreen } from "@/components/phones/FaxScreen";
+import { RemoteScreen } from "@/components/phones/RemoteScreen";
 import { HeroCursor } from "./HeroCursor";
 import { RotatingBadge } from "./RotatingBadge";
 import { useIntro, easeOut } from "@/lib/intro";
 import { useSiteContent } from "@/context/SiteContentContext";
 
-// The 3 Hero Applications
+// The 3 Hero Applications: Storage Cleaner, Fax, and Universal TV Remote
 const HERO_APPS = [
   {
     id: "cleaner",
     appId: "storage-cleaner",
-    name: "Phone Cleaner",
+    name: "Storage Cleaner",
     Screen: CleanerScreen,
     testid: "hero-phone-cleaner",
     screenId: "hero-cleaner",
   },
   {
-    id: "baby",
-    appId: "baby-tracker",
-    name: "Baby Tracker",
-    Screen: BabyScreen,
-    testid: "hero-phone-baby",
-    screenId: "hero-baby",
+    id: "fax",
+    appId: "fax",
+    name: "Fax",
+    Screen: FaxScreen,
+    testid: "hero-phone-fax",
+    screenId: "hero-fax",
   },
   {
-    id: "resume",
-    appId: "resume-builder",
-    name: "AI Resume",
-    Screen: ResumeScreen,
-    testid: "hero-phone-resume",
-    screenId: "hero-resume",
+    id: "remote",
+    appId: "tv-remote",
+    name: "Universal TV Remote",
+    Screen: RemoteScreen,
+    testid: "hero-phone-remote",
+    screenId: "hero-remote",
   },
 ];
 
