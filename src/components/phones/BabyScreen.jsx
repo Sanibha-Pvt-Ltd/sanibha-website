@@ -31,7 +31,7 @@ export const BabyScreen = ({ id = "baby" }) => {
       </div>
 
       {/* Main Interactive Bottle Feed Card */}
-      <div className="mt-3 rounded-2xl border border-pink-500/20 bg-white/[0.06] p-3 backdrop-blur-md">
+      <div className="mt-3 rounded-2xl border border-pink-500/20 bg-white/[0.08] p-3">
         <div className="flex items-center justify-between text-xs">
           <span className="font-medium text-pink-200">Bottle Feeding</span>
           <span className="font-mono text-[10px] text-white/50">{lastLogged}</span>

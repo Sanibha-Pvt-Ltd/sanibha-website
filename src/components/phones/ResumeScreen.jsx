@@ -54,7 +54,7 @@ export const ResumeScreen = ({ id = "resume" }) => {
       </div>
 
       {/* Live Resume Card Preview */}
-      <div className="mt-2.5 flex-1 rounded-2xl border border-emerald-500/20 bg-white/[0.05] p-3 backdrop-blur-md flex flex-col justify-between">
+      <div className="mt-2.5 flex-1 rounded-2xl border border-emerald-500/20 bg-white/[0.08] p-3 flex flex-col justify-between">
         <div>
           <div className="flex items-center justify-between border-b border-white/10 pb-2">
             <div>
