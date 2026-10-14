@@ -11,29 +11,118 @@ export const Footer = () => {
   const wordmark = config?.footer?.wordmark || "sanibha";
   const tagline = config?.footer?.tagline || "Utilities as pure and radiant as a bright light.";
   const copyright = config?.footer?.copyright || "© 2026 Sanibha. All rights reserved.";
+  const company = config?.company || {};
+  const legalName = company?.legalName || "Sanibha Private Limited";
+  const addressOneLine = company?.addressOneLine || "451P, 2nd Floor, The Palm Crest, Sector 50, Gurgaon, Haryana 122018, India";
+  const supportEmail = company?.supportEmail || "support@sanibha.com";
   const letters = wordmark.split("");
 
   return (
     <footer data-testid="site-footer" className="relative overflow-hidden border-t hairline px-6 pt-20 sm:px-10">
-      <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
+      <div className="mx-auto grid max-w-7xl gap-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.2fr]">
+        {/* Col 1: Studio */}
         <div>
           <p className="max-w-sm font-serif text-3xl italic leading-tight">{tagline}</p>
-          <Link to="/contact" data-testid="footer-contact-link" className="mt-6 inline-block border-b border-ink/40 pb-1 text-sm font-semibold transition-colors hover:border-ink">Start a conversation</Link>
+          <div className="mt-6 text-xs text-dim leading-relaxed">
+            <p className="font-semibold text-ink">{legalName}</p>
+            <p className="mt-1 max-w-xs">{addressOneLine}</p>
+          </div>
+          <Link
+            to="/contact"
+            data-testid="footer-contact-link"
+            className="mt-5 inline-block border-b border-ink/40 pb-1 text-xs font-semibold uppercase tracking-wider transition-colors hover:border-ink"
+          >
+            Start a conversation &rarr;
+          </Link>
         </div>
+
+        {/* Col 2: Navigate */}
         <div>
           <p className="eyebrow mb-4">Navigate</p>
-          <ul className="space-y-2">
+          <ul className="space-y-2.5 text-sm">
             {NAV.map((n) => (
-              <li key={n.to}><Link data-testid={`footer-nav-${n.label.toLowerCase()}`} to={n.to} className="text-dim transition-colors hover:text-ink">{n.label}</Link></li>
+              <li key={n.to}>
+                <Link
+                  data-testid={`footer-nav-${n.label.toLowerCase()}`}
+                  to={n.to}
+                  className="text-dim transition-colors hover:text-ink"
+                >
+                  {n.label}
+                </Link>
+              </li>
             ))}
           </ul>
         </div>
-        <div className="flex flex-col items-start gap-4">
-          <p className="eyebrow">Appearance</p>
-          <ThemeToggle testid="footer-theme-toggle" />
-          <button data-testid="back-to-top-btn" onClick={() => window.__lenis ? window.__lenis.scrollTo(0) : window.scrollTo({ top: 0, behavior: "smooth" })} className="group mt-2 flex items-center gap-2 text-sm text-dim hover:text-ink">
-            Back to top <ArrowUp className="h-4 w-4 transition-transform group-hover:-translate-y-1" />
-          </button>
+
+        {/* Col 3: Support */}
+        <div>
+          <p className="eyebrow mb-4">Help & Support</p>
+          <ul className="space-y-2.5 text-sm">
+            <li>
+              <Link to="/support" className="text-dim transition-colors hover:text-ink">
+                Support Center
+              </Link>
+            </li>
+            <li>
+              <Link to="/support#cancel" className="text-dim transition-colors hover:text-ink">
+                Cancel Subscription
+              </Link>
+            </li>
+            <li>
+              <Link to="/support#refund" className="text-dim transition-colors hover:text-ink">
+                Refund Requests
+              </Link>
+            </li>
+            <li>
+              <Link to="/data-request" className="text-dim transition-colors hover:text-ink">
+                Data Rights (DPDP)
+              </Link>
+            </li>
+            <li>
+              <a href={`mailto:${supportEmail}`} className="text-dim transition-colors hover:text-ink font-mono text-xs">
+                {supportEmail}
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        {/* Col 4: Legal & Appearance */}
+        <div className="flex flex-col justify-between gap-6">
+          <div>
+            <p className="eyebrow mb-4">Legal & Compliance</p>
+            <ul className="space-y-2.5 text-sm">
+              <li>
+                <Link to="/privacy" className="text-dim transition-colors hover:text-ink">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link to="/terms" className="text-dim transition-colors hover:text-ink">
+                  Terms of Use
+                </Link>
+              </li>
+              <li>
+                <Link to="/privacy#grievance" className="text-dim transition-colors hover:text-ink">
+                  Grievance Officer
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div className="flex flex-col items-start gap-3 border-t hairline pt-4">
+            <div className="flex items-center gap-3">
+              <ThemeToggle testid="footer-theme-toggle" />
+              <button
+                data-testid="back-to-top-btn"
+                onClick={() =>
+                  window.__lenis ? window.__lenis.scrollTo(0) : window.scrollTo({ top: 0, behavior: "smooth" })
+                }
+                className="group flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-dim hover:text-ink"
+              >
+                Top <ArrowUp className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-1" />
+              </button>
+            </div>
+          </div>
         </div>
       </div>
       <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.1 }} className="mt-16 flex select-none justify-center leading-[0.8] tracking-[-0.04em]">

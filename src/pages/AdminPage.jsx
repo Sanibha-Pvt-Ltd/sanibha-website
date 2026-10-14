@@ -25,6 +25,8 @@ import {
   ToggleRight,
   Sliders,
   Type,
+  ShieldCheck,
+  Scale,
 } from "lucide-react";
 import { useSiteContent } from "@/context/SiteContentContext";
 import { APPS } from "@/data/apps";
@@ -257,6 +259,7 @@ export default function AdminPage() {
             { id: "about", label: "About Page", icon: Layout },
             { id: "contact", label: "Contact & FAQs", icon: HelpCircle },
             { id: "footer", label: "Footer", icon: FileText },
+            { id: "company", label: "Company & Legal", icon: ShieldCheck },
           ].map(({ id, label, icon: Icon, badge }) => (
             <button
               key={id}
@@ -1261,6 +1264,234 @@ export default function AdminPage() {
                   onChange={(e) => updateSection("footer", { copyright: e.target.value })}
                   className="mt-1.5 w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white outline-none focus:border-amber-400"
                 />
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* TAB 9: COMPANY & LEGAL COMPLIANCE */}
+        {activeTab === "company" && (
+          <div className="mt-8 rounded-3xl border border-white/10 bg-white/[0.03] p-6 space-y-8">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-white/10 pb-6">
+              <div>
+                <h2 className="font-display text-xl font-bold text-white flex items-center gap-2">
+                  <ShieldCheck className="h-5 w-5 text-emerald-400" /> Company Identity & Legal Compliance
+                </h2>
+                <p className="mt-1 text-xs text-white/60">
+                  Manage official statutory registration details for Sanibha Private Limited. Synchronizes live with all legal pages, verification headers, and Apple App Store compliance documents.
+                </p>
+              </div>
+
+              {/* Quick links to live legal pages */}
+              <div className="flex flex-wrap gap-2 text-xs">
+                <Link
+                  to="/privacy"
+                  target="_blank"
+                  className="rounded-xl border border-white/10 bg-white/5 px-3 py-1.5 text-white/80 hover:bg-white/10 hover:text-white flex items-center gap-1.5"
+                >
+                  <span>/privacy</span>
+                  <ExternalLink className="h-3 w-3" />
+                </Link>
+                <Link
+                  to="/terms"
+                  target="_blank"
+                  className="rounded-xl border border-white/10 bg-white/5 px-3 py-1.5 text-white/80 hover:bg-white/10 hover:text-white flex items-center gap-1.5"
+                >
+                  <span>/terms</span>
+                  <ExternalLink className="h-3 w-3" />
+                </Link>
+                <Link
+                  to="/support"
+                  target="_blank"
+                  className="rounded-xl border border-white/10 bg-white/5 px-3 py-1.5 text-white/80 hover:bg-white/10 hover:text-white flex items-center gap-1.5"
+                >
+                  <span>/support</span>
+                  <ExternalLink className="h-3 w-3" />
+                </Link>
+                <Link
+                  to="/data-request"
+                  target="_blank"
+                  className="rounded-xl border border-white/10 bg-white/5 px-3 py-1.5 text-white/80 hover:bg-white/10 hover:text-white flex items-center gap-1.5"
+                >
+                  <span>/data-request</span>
+                  <ExternalLink className="h-3 w-3" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Corporate Profile */}
+            <div className="space-y-4">
+              <h3 className="font-mono text-xs uppercase tracking-wider text-amber-400">
+                1. Corporate Profile & Jurisdiction
+              </h3>
+              <div className="grid gap-5 md:grid-cols-3">
+                <div>
+                  <label className="block font-mono text-[11px] uppercase tracking-wider text-white/60">
+                    Legal Entity Name
+                  </label>
+                  <input
+                    type="text"
+                    value={config.company?.legalName || ""}
+                    onChange={(e) => updateSection("company", { legalName: e.target.value })}
+                    className="mt-1.5 w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white outline-none focus:border-amber-400"
+                    placeholder="Sanibha Private Limited"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-mono text-[11px] uppercase tracking-wider text-white/60">
+                    Corporate Country
+                  </label>
+                  <input
+                    type="text"
+                    value={config.company?.country || ""}
+                    onChange={(e) => updateSection("company", { country: e.target.value })}
+                    className="mt-1.5 w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white outline-none focus:border-amber-400"
+                    placeholder="India"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-mono text-[11px] uppercase tracking-wider text-white/60">
+                    CIN (Registration Number)
+                  </label>
+                  <input
+                    type="text"
+                    value={config.company?.cin || ""}
+                    onChange={(e) => updateSection("company", { cin: e.target.value })}
+                    className="mt-1.5 w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white outline-none focus:border-amber-400"
+                    placeholder="Optional (e.g. U72200HR2026PTC...)"
+                  />
+                </div>
+
+                <div className="md:col-span-2">
+                  <label className="block font-mono text-[11px] uppercase tracking-wider text-white/60">
+                    Full Registered Office Address (One Line)
+                  </label>
+                  <input
+                    type="text"
+                    value={config.company?.addressOneLine || ""}
+                    onChange={(e) => updateSection("company", { addressOneLine: e.target.value })}
+                    className="mt-1.5 w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white outline-none focus:border-amber-400"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-mono text-[11px] uppercase tracking-wider text-white/60">
+                    Jurisdiction City
+                  </label>
+                  <input
+                    type="text"
+                    value={config.company?.jurisdictionCity || ""}
+                    onChange={(e) => updateSection("company", { jurisdictionCity: e.target.value })}
+                    className="mt-1.5 w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white outline-none focus:border-amber-400"
+                    placeholder="Gurugram, Haryana"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Officers & Statutory Compliance */}
+            <div className="space-y-4 border-t border-white/10 pt-6">
+              <h3 className="font-mono text-xs uppercase tracking-wider text-emerald-400">
+                2. Grievance Officer & Statutory Timelines (DPDP Act 2023)
+              </h3>
+              <div className="grid gap-5 md:grid-cols-4">
+                <div>
+                  <label className="block font-mono text-[11px] uppercase tracking-wider text-white/60">
+                    Grievance Officer Name
+                  </label>
+                  <input
+                    type="text"
+                    value={config.company?.grievanceOfficer || ""}
+                    onChange={(e) => updateSection("company", { grievanceOfficer: e.target.value })}
+                    className="mt-1.5 w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white outline-none focus:border-amber-400"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-mono text-[11px] uppercase tracking-wider text-white/60">
+                    Officer Designation
+                  </label>
+                  <input
+                    type="text"
+                    value={config.company?.grievanceTitle || ""}
+                    onChange={(e) => updateSection("company", { grievanceTitle: e.target.value })}
+                    className="mt-1.5 w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white outline-none focus:border-amber-400"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-mono text-[11px] uppercase tracking-wider text-white/60">
+                    SLA Response Window
+                  </label>
+                  <input
+                    type="text"
+                    value={config.company?.responseTime || ""}
+                    onChange={(e) => updateSection("company", { responseTime: e.target.value })}
+                    className="mt-1.5 w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white outline-none focus:border-amber-400"
+                    placeholder="2 business days"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-mono text-[11px] uppercase tracking-wider text-white/60">
+                    Policy Last Updated
+                  </label>
+                  <input
+                    type="text"
+                    value={config.company?.policyUpdated || ""}
+                    onChange={(e) => updateSection("company", { policyUpdated: e.target.value })}
+                    className="mt-1.5 w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white outline-none focus:border-amber-400"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Support & Privacy Communications */}
+            <div className="space-y-4 border-t border-white/10 pt-6">
+              <h3 className="font-mono text-xs uppercase tracking-wider text-sky-400">
+                3. Channels & Hosting Infrastructure
+              </h3>
+              <div className="grid gap-5 md:grid-cols-3">
+                <div>
+                  <label className="block font-mono text-[11px] uppercase tracking-wider text-white/60">
+                    Customer Support Email
+                  </label>
+                  <input
+                    type="email"
+                    value={config.company?.supportEmail || ""}
+                    onChange={(e) => {
+                      updateSection("company", { supportEmail: e.target.value });
+                      updateSection("contact", { email: e.target.value });
+                    }}
+                    className="mt-1.5 w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white outline-none focus:border-amber-400 font-mono"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-mono text-[11px] uppercase tracking-wider text-white/60">
+                    Privacy / Data Subject Email
+                  </label>
+                  <input
+                    type="email"
+                    value={config.company?.privacyEmail || ""}
+                    onChange={(e) => updateSection("company", { privacyEmail: e.target.value })}
+                    className="mt-1.5 w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white outline-none focus:border-amber-400 font-mono"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-mono text-[11px] uppercase tracking-wider text-white/60">
+                    Hosting Provider Notice
+                  </label>
+                  <input
+                    type="text"
+                    value={config.company?.hostingProvider || ""}
+                    onChange={(e) => updateSection("company", { hostingProvider: e.target.value })}
+                    className="mt-1.5 w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white outline-none focus:border-amber-400"
+                  />
+                </div>
               </div>
             </div>
           </div>

@@ -183,8 +183,8 @@ export const DEFAULT_CONFIG = {
     heroEyebrow: "Direct access",
     heroTitlePart1: "Say hello.",
     heroTitleHighlight: "We're listening.",
-    email: "hello@sanibha.studio",
-    address: "Sanibha Studio · Cupertino & San Francisco",
+    email: "support@sanibha.com",
+    address: "451P, 2nd Floor, The Palm Crest, Sector 50, Gurgaon, Haryana 122018, India",
     faqs: [
       {
         q: "Are Sanibha apps one-time purchases or subscriptions?",
@@ -200,7 +200,7 @@ export const DEFAULT_CONFIG = {
       },
       {
         q: "How can I request a new feature or utility?",
-        a: "Send us a note through the contact form or email hello@sanibha.studio. We read every single dispatch directly.",
+        a: "Send us a note through the contact form or email support@sanibha.com. We read every single dispatch directly.",
       },
     ],
   },
@@ -208,8 +208,31 @@ export const DEFAULT_CONFIG = {
   // 8. Footer
   footer: {
     wordmark: "sanibha",
-    tagline: "Radiant utilities for iOS.",
-    copyright: "© 2026 Sanibha Studio. All rights reserved.",
+    tagline: "Utilities as pure and radiant as a bright light.",
+    copyright: "© 2026 Sanibha Private Limited. All rights reserved.",
+  },
+
+  // 9. Company Legal & Platform Compliance
+  company: {
+    legalName: "Sanibha Private Limited",
+    cin: "",
+    country: "India",
+    addressLines: [
+      "451P, 2nd Floor, The Palm Crest",
+      "Sector 50, Gurgaon",
+      "Haryana 122018, India",
+    ],
+    addressOneLine: "451P, 2nd Floor, The Palm Crest, Sector 50, Gurgaon, Haryana 122018, India",
+    jurisdictionCity: "Gurugram, Haryana",
+    founder: "Bharat Bhatia",
+    yearFounded: "2026",
+    supportEmail: "support@sanibha.com",
+    privacyEmail: "support@sanibha.com",
+    responseTime: "2 business days",
+    grievanceOfficer: "Bharat Bhatia",
+    grievanceTitle: "Director",
+    policyUpdated: "13 October 2026",
+    hostingProvider: "Vercel / Cloudflare",
   },
 };
 
@@ -230,6 +253,18 @@ export const SiteContentProvider = ({ children }) => {
           appVisibility: {
             ...DEFAULT_CONFIG.appVisibility,
             ...(parsed.appVisibility || {}),
+          },
+          company: {
+            ...DEFAULT_CONFIG.company,
+            ...(parsed.company || {}),
+          },
+          contact: {
+            ...DEFAULT_CONFIG.contact,
+            ...(parsed.contact || {}),
+          },
+          footer: {
+            ...DEFAULT_CONFIG.footer,
+            ...(parsed.footer || {}),
           },
         };
       }

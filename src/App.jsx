@@ -15,6 +15,10 @@ import AppsPage from "@/pages/AppsPage";
 import AboutPage from "@/pages/AboutPage";
 import ContactPage from "@/pages/ContactPage";
 import AdminPage from "@/pages/AdminPage";
+import PrivacyPage from "@/pages/PrivacyPage";
+import TermsPage from "@/pages/TermsPage";
+import SupportPage from "@/pages/SupportPage";
+import DataRequestPage from "@/pages/DataRequestPage";
 
 const Shell = () => {
   const { pathname } = useLocation();
@@ -39,6 +43,10 @@ const Shell = () => {
         <Route path="/apps" element={<AppsPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/support" element={<SupportPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
+        <Route path="/terms" element={<TermsPage />} />
+        <Route path="/data-request" element={<DataRequestPage />} />
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />

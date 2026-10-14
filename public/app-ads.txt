@@ -1,0 +1,3 @@
+# app-ads.txt for sanibha.com
+# No ad networks authorised yet. Add the lines Meta gives you to
+# app_ads_lines in site.json and rebuild.
