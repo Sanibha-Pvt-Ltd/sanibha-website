@@ -254,7 +254,7 @@ export const AppsShowcase = () => {
                 {currentApp.no} · {currentApp.name}
               </span>
             </div>
-            <span className={`eyebrow text-[10px] font-semibold ${isAppComingSoon?.(currentApp.id) ? "text-amber-600 font-bold" : "text-emerald-700 font-bold"}`}>
+            <span className={`eyebrow text-[10px] font-bold ${isAppComingSoon?.(currentApp.id) ? "text-amber-600 dark:text-amber-400" : "text-emerald-600 dark:text-emerald-400"}`}>
               {isAppComingSoon?.(currentApp.id) ? "Coming soon" : "Try it — it's live"}
             </span>
           </div>
