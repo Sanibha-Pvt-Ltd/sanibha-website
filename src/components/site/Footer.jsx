@@ -102,6 +102,16 @@ export const Footer = () => {
                 </Link>
               </li>
               <li>
+                <a
+                  href="/incorporation-certificate.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-700 hover:text-slate-950 dark:text-slate-300 dark:hover:text-white transition-colors flex items-center gap-1.5"
+                >
+                  Incorporation certificate
+                </a>
+              </li>
+              <li>
                 <Link to="/privacy#grievance" className="text-slate-700 hover:text-slate-950 dark:text-slate-300 dark:hover:text-white transition-colors">
                   Grievance Officer
                 </Link>
