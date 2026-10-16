@@ -200,7 +200,7 @@ export const DEFAULT_CONFIG = {
     heroTitlePart1: "Say hello.",
     heroTitleHighlight: "We're listening.",
     email: "support@sanibha.com",
-    address: "451P, 2nd Floor, The Palm Crest, Sector 50, Gurgaon, Haryana 122018, India",
+    address: "451 P, SECOND FLOOR, SECTOR 50, GURUGRAM, Gurgaon, Sadar Bazar, Gurgaon- 122001, Haryana",
     faqs: [
       {
         q: "Are Sanibha apps one-time purchases or subscriptions?",
@@ -234,11 +234,11 @@ export const DEFAULT_CONFIG = {
     cin: "",
     country: "India",
     addressLines: [
-      "451P, 2nd Floor, The Palm Crest",
-      "Sector 50, Gurgaon",
-      "Haryana 122018, India",
+      "451 P, SECOND FLOOR, SECTOR 50",
+      "GURUGRAM, Gurgaon, Sadar Bazar",
+      "Gurgaon- 122001, Haryana, India",
     ],
-    addressOneLine: "451P, 2nd Floor, The Palm Crest, Sector 50, Gurgaon, Haryana 122018, India",
+    addressOneLine: "451 P, SECOND FLOOR, SECTOR 50, GURUGRAM, Gurgaon, Sadar Bazar, Gurgaon- 122001, Haryana, India",
     jurisdictionCity: "Gurugram, Haryana",
     founder: "Bharat Bhatia",
     yearFounded: "2026",

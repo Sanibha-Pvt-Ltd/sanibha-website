@@ -13,7 +13,7 @@ export const Footer = () => {
   const copyright = config?.footer?.copyright || "© 2026 Sanibha. All rights reserved.";
   const company = config?.company || {};
   const legalName = company?.legalName || "Sanibha Private Limited";
-  const addressOneLine = company?.addressOneLine || "451P, 2nd Floor, The Palm Crest, Sector 50, Gurgaon, Haryana 122018, India";
+  const addressOneLine = company?.addressOneLine || "451 P, SECOND FLOOR, SECTOR 50, GURUGRAM, Gurgaon, Sadar Bazar, Gurgaon- 122001, Haryana, India";
   const supportEmail = company?.supportEmail || "support@sanibha.com";
   const letters = wordmark.split("");
 
