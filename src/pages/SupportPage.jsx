@@ -33,7 +33,7 @@ export default function SupportPage() {
       <PageHero
         testid="support-hero"
         eyebrow="Help & Assistance"
-        text="Need assistance with a Sanibha app? We take customer support seriously. Most subscription, refund, and restoration workflows are detailed below."
+        text="Need assistance with a Sanibha app? Our apps are in active development — here is how customer support, subscriptions, and data will work once they launch."
         lines={[
           "How can we",
           <span key="highlight" className="font-serif italic font-normal prism-text pr-2">
@@ -98,7 +98,7 @@ export default function SupportPage() {
                   Cancel a Subscription
                 </h3>
                 <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300 mb-4">
-                  Subscriptions are billed and managed directly through Apple. Deleting the application does not automatically cancel the subscription.
+                  When our apps launch, any optional subscriptions will be billed and managed directly through Apple. Deleting the application does not automatically cancel the subscription.
                 </p>
                 <ol className="space-y-2 text-xs text-slate-700 dark:text-slate-300 list-decimal list-inside bg-ink/[0.02] p-4 rounded-xl">
                   <li>Open <strong className="text-ink">Settings</strong> on your iPhone</li>
@@ -108,7 +108,7 @@ export default function SupportPage() {
                 </ol>
               </div>
               <p className="mt-4 text-xs text-slate-700 dark:text-slate-300 italic">
-                You retain full premium access until the end of your prepaid billing period.
+                You will retain full access until the end of your prepaid billing period.
               </p>
             </Reveal>
 
@@ -122,7 +122,7 @@ export default function SupportPage() {
                   Request a Refund
                 </h3>
                 <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300 mb-4">
-                  Because payments are processed through Apple App Store in-app purchases, developers cannot issue direct merchant refunds. Apple handles all claims through their dedicated portal.
+                  Because payments will be processed through Apple App Store in-app purchases, developers cannot issue direct merchant refunds. Apple handles all claims through their dedicated portal once apps are available.
                 </p>
                 <div className="text-xs text-slate-700 dark:text-slate-300 space-y-2 bg-ink/[0.02] p-4 rounded-xl">
                   <p>1. Visit Apple's dispute portal below.</p>
@@ -150,7 +150,7 @@ export default function SupportPage() {
                   Restore Purchases
                 </h3>
                 <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300 mb-4">
-                  If you bought a lifetime pass or active subscription and reinstall the app, you will never be charged twice.
+                  When our apps are released, if you buy a lifetime pass or active subscription and reinstall the app, you will be able to restore your purchases without being charged twice.
                 </p>
                 <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed bg-ink/[0.02] p-4 rounded-xl">
                   Open the app, navigate to its Settings or Subscription paywall, and tap <strong className="text-ink">&ldquo;Restore Purchases&rdquo;</strong>. Ensure you are signed in to the identical Apple ID on your iPhone.
@@ -171,10 +171,10 @@ export default function SupportPage() {
                   Switching Devices & Backups
                 </h3>
                 <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300 mb-4">
-                  Our apps store records locally on your device for strict privacy. When migrating to a new iPhone, standard iCloud Backup or Mac Encrypted Backups seamlessly restore your app databases.
+                  Our apps will store records locally on your device for strict privacy. When migrating to a new iPhone, standard iCloud Backup or Mac Encrypted Backups seamlessly restore your app databases.
                 </p>
                 <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed bg-ink/[0.02] p-4 rounded-xl">
-                  You can also export your raw logs into standard JSON/CSV files anytime using the in-app export tool before migrating.
+                  Each app will also include a free in-app data export option in its settings before migrating.
                 </p>
               </div>
               <Link
